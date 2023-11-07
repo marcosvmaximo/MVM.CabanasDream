@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Festa", "2 - Festa", "{C3AB4FB6-6E27-4AF1-BEBD-B43118E81AB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Catalogo", "1 - Catalogo", "{9E1C06E7-838A-4854-A88E-493357D4E755}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Estoque", "3 - Estoque", "{B52E80F8-6388-44F4-8CB5-F0045FF1A23F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Pagamento", "4 - Pagamento", "{91ACF5A2-ADF5-4516-88C6-4F1BD1900CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Festa.Domain", "src\MVM.CabanasDream.Festa.Domain\MVM.CabanasDream.Festa.Domain.csproj", "{A6EB353E-7C39-4087-8896-3FC0D6777F12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Festa.Application", "src\MVM.CabanasDream.Festa.Application\MVM.CabanasDream.Festa.Application.csproj", "{BEB6D893-8CD3-403E-B437-E6F9161667F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Core", "5 - Core", "{6F9A1AA4-FC51-4FA8-924D-2E46EE0B6026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Core", "src\MVM.CabanasDream.Core\MVM.CabanasDream.Core.csproj", "{60735AB8-F75E-41D4-ADB4-CBEDE9A9C01A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Festa.Data", "src\MVM.CabanasDream.Festa.Data\MVM.CabanasDream.Festa.Data.csproj", "{60202A39-C5D4-41D7-915C-CE6FB4F28858}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6EB353E-7C39-4087-8896-3FC0D6777F12} = {C3AB4FB6-6E27-4AF1-BEBD-B43118E81AB9}
+		{BEB6D893-8CD3-403E-B437-E6F9161667F5} = {C3AB4FB6-6E27-4AF1-BEBD-B43118E81AB9}
+		{60735AB8-F75E-41D4-ADB4-CBEDE9A9C01A} = {6F9A1AA4-FC51-4FA8-924D-2E46EE0B6026}
+		{60202A39-C5D4-41D7-915C-CE6FB4F28858} = {C3AB4FB6-6E27-4AF1-BEBD-B43118E81AB9}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6EB353E-7C39-4087-8896-3FC0D6777F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EB353E-7C39-4087-8896-3FC0D6777F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EB353E-7C39-4087-8896-3FC0D6777F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EB353E-7C39-4087-8896-3FC0D6777F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB6D893-8CD3-403E-B437-E6F9161667F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB6D893-8CD3-403E-B437-E6F9161667F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB6D893-8CD3-403E-B437-E6F9161667F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB6D893-8CD3-403E-B437-E6F9161667F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60735AB8-F75E-41D4-ADB4-CBEDE9A9C01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60735AB8-F75E-41D4-ADB4-CBEDE9A9C01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60735AB8-F75E-41D4-ADB4-CBEDE9A9C01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60735AB8-F75E-41D4-ADB4-CBEDE9A9C01A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60202A39-C5D4-41D7-915C-CE6FB4F28858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60202A39-C5D4-41D7-915C-CE6FB4F28858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60202A39-C5D4-41D7-915C-CE6FB4F28858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60202A39-C5D4-41D7-915C-CE6FB4F28858}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
