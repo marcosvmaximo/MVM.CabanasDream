@@ -1,6 +1,11 @@
+using MediatR;
+
 namespace MVM.CabanasDream.Core.Messages.Common;
 
-public class Event
+public abstract class Event : Message, INotification
 {
-    
+    protected Event()
+    {
+        MessageType = GetType().Name;
+    }
 }
