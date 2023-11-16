@@ -21,6 +21,8 @@ public abstract class Entity
     public void AddEvent(IEnumerable<Event> @event) => _events.AddRange(@event);
 
     public void CleanEvents() => _events = new();
+    
+    public abstract void Validar();
 
     public override bool Equals(object? obj)
     {

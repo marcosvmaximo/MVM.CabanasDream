@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities\" />
+      <ProjectReference Include="..\MVM.CabanasDream.Core\MVM.CabanasDream.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Enum\" />
+      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>
