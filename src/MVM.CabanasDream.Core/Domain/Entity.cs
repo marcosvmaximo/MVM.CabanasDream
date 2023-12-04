@@ -23,7 +23,14 @@ public abstract class Entity
     public void CleanEvents() => _events = new();
     
     public abstract void Validar();
+    
+    public virtual bool CheckForNullProperties()
+    {
+        var properties = GetType().GetProperties();
 
+        return properties.Any(prop => prop.GetValue(this) == null);
+    }
+    
     public override bool Equals(object? obj)
     {
         var compareToo = obj as Entity;

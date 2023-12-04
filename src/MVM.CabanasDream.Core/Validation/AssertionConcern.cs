@@ -73,7 +73,15 @@ namespace MVM.CabanasDream.Core.Validation;
                 throw new InvalidOperationException(message);
             }
         }
-
+        
+        public static void AssertArgumentRange(DateTime value, DateTime min, DateTime max, string message)
+        {
+            if (value < min || value > max)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+        
         public static void AssertArgumentRange(double value, double minimum, double maximum, string message)
         {
             if (value < minimum || value > maximum)
@@ -113,6 +121,30 @@ namespace MVM.CabanasDream.Core.Validation;
                 throw new InvalidOperationException(message);
             }
         }
+        
+        public static void AssertArgumentLetterThan(DateTime value, DateTime min, string message)
+        {
+            if (value <= min)
+            {
+                throw new ArgumentException(message, nameof(value));
+            }
+        }
+
+        public static void AssertArgumentGreaterThanOrEqualTo(DateTime value, DateTime min, string message)
+        {
+            if (value < min)
+            {
+                throw new ArgumentException(message, nameof(value));
+            }
+        }
+
+        public static void AssertArgumentGreaterThan(DateTime value, DateTime max, string message)
+        {
+            if (value >= max)
+            {
+                throw new ArgumentException(message, nameof(value));
+            }
+        }
 
         public static void AssertArgumentTrue(bool boolValue, string message)
         {
@@ -138,82 +170,27 @@ namespace MVM.CabanasDream.Core.Validation;
             }
         }
 
-        protected AssertionConcern()
+        public static void AssertEmail(string email, string message)
         {
+            if (!IsValidEmail(email))
+            {
+                throw new InvalidOperationException(message);
+            }
         }
 
-        protected void SelfAssertArgumentEquals(object object1, object object2, string message)
+        private static bool IsValidEmail(string email)
         {
-            AssertionConcern.AssertArgumentEquals(object1, object2, message);
-        }
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
-        protected void SelfAssertArgumentFalse(bool boolValue, string message)
-        {
-            AssertionConcern.AssertArgumentFalse(boolValue, message);
-        }
-
-        protected void SelfAssertArgumentLength(string stringValue, int maximum, string message)
-        {
-            AssertionConcern.AssertArgumentLength(stringValue, maximum, message);
-        }
-
-        protected void SelfAssertArgumentLength(string stringValue, int minimum, int maximum, string message)
-        {
-            AssertionConcern.AssertArgumentLength(stringValue, minimum, maximum, message);
-        }
-
-        protected void SelfAssertArgumentMatches(string pattern, string stringValue, string message)
-        {
-            AssertionConcern.AssertArgumentMatches(pattern, stringValue, message);
-        }
-
-        protected void SelfAssertArgumentNotEmpty(string stringValue, string message)
-        {
-            AssertionConcern.AssertArgumentNotEmpty(stringValue, message);
-        }
-
-        protected void SelfAssertArgumentNotEquals(object object1, object object2, string message)
-        {
-            AssertionConcern.AssertArgumentNotEquals(object1, object2, message);
-        }
-
-        protected void SelfAssertArgumentNotNull(object object1, string message)
-        {
-            AssertionConcern.AssertArgumentNotNull(object1, message);
-        }
-
-        protected void SelfAssertArgumentRange(double value, double minimum, double maximum, string message)
-        {
-            AssertionConcern.AssertArgumentRange(value, minimum, maximum, message);
-        }
-
-        protected void SelfAssertArgumentRange(float value, float minimum, float maximum, string message)
-        {
-            AssertionConcern.AssertArgumentRange(value, minimum, maximum, message);
-        }
-
-        protected void SelfAssertArgumentRange(int value, int minimum, int maximum, string message)
-        {
-            AssertionConcern.AssertArgumentRange(value, minimum, maximum, message);
-        }
-
-        protected void SelfAssertArgumentRange(long value, long minimum, long maximum, string message)
-        {
-            AssertionConcern.AssertArgumentRange(value, minimum, maximum, message);
-        }
-
-        protected void SelfAssertArgumentTrue(bool boolValue, string message)
-        {
-            AssertionConcern.AssertArgumentTrue(boolValue, message);
-        }
-
-        protected void SelfAssertStateFalse(bool boolValue, string message)
-        {
-            AssertionConcern.AssertStateFalse(boolValue, message);
-        }
-
-        protected void SelfAssertStateTrue(bool boolValue, string message)
-        {
-            AssertionConcern.AssertStateTrue(boolValue, message);
+            try
+            {
+                var regex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
+                return regex.IsMatch(email);
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
         }
     }
