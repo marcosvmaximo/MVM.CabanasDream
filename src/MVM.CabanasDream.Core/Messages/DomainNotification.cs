@@ -3,7 +3,7 @@ using MVM.CabanasDream.Core.Messages.Common;
 
 namespace MVM.CabanasDream.Core.Messages;
 
-public sealed class DomainNotification : Event
+public class DomainNotification : Event
 {
     public DomainNotification(string key, string message)
     {

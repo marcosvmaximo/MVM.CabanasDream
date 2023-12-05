@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using MVM.CabanasDream.Core.Exceptions;
 
 namespace MVM.CabanasDream.Core.Validation;
  public class AssertionConcern
@@ -7,7 +8,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (!object1.Equals(object2))
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -15,7 +16,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (boolValue)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -24,19 +25,19 @@ namespace MVM.CabanasDream.Core.Validation;
             int length = stringValue.Trim().Length;
             if (length > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
         public static void AssertArgumentLength(string stringValue, int minimum, int maximum, string message)
         {
             if(stringValue == null)
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
 
             int length = stringValue.Trim().Length;
             if (length < minimum || length > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -46,7 +47,7 @@ namespace MVM.CabanasDream.Core.Validation;
 
             if (!regex.IsMatch(stringValue))
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -54,7 +55,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (stringValue == null || stringValue.Trim().Length == 0)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -62,7 +63,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (object1.Equals(object2))
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -70,7 +71,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (object1 == null)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
         
@@ -78,7 +79,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < min || value > max)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
         
@@ -86,7 +87,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < minimum || value > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -94,7 +95,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < minimum || value > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -102,7 +103,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < minimum || value > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -110,7 +111,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < minimum || value > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -118,7 +119,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < minimum || value > maximum)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
         
@@ -126,7 +127,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value <= min)
             {
-                throw new ArgumentException(message, nameof(value));
+                throw new DomainException(message);
             }
         }
 
@@ -134,7 +135,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value < min)
             {
-                throw new ArgumentException(message, nameof(value));
+                throw new DomainException(message);
             }
         }
 
@@ -142,7 +143,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (value >= max)
             {
-                throw new ArgumentException(message, nameof(value));
+                throw new DomainException(message);
             }
         }
 
@@ -150,7 +151,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (!boolValue)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -158,7 +159,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (boolValue)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -166,7 +167,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (!boolValue)
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 
@@ -174,7 +175,7 @@ namespace MVM.CabanasDream.Core.Validation;
         {
             if (!IsValidEmail(email))
             {
-                throw new InvalidOperationException(message);
+                throw new DomainException(message);
             }
         }
 

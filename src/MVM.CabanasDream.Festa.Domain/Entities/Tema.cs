@@ -34,6 +34,8 @@ public class Tema : Entity
         if(produto == null)
             throw new DomainException("Produto informado inválido.");
 
+        PrecoBase += produto.ValorLocacao;
+        
         _produtos.Add(produto);
     }
     

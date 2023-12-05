@@ -24,6 +24,8 @@ public class Festa : Entity, IAggregateRoot
 
         Status = EStatusFesta.Pendente;
         Observacao = observacao;
+        
+        Validar();
     }
 
     public int QuantidadeParticipantes { get; private set; }
@@ -39,7 +41,7 @@ public class Festa : Entity, IAggregateRoot
     
     public Tema Tema { get; private set; }
     public Cliente Cliente { get; private set; }
-    public Contrato Contrato { get; private set; }
+    public Contrato? Contrato { get; private set; }
     public Administrador Administrador { get; private set; }
 
     public void AdicionarContrato(Contrato contrato)
@@ -50,8 +52,53 @@ public class Festa : Entity, IAggregateRoot
         Contrato = contrato;
         ContratoId = contrato.Id;
     }
-    
-    public override void Validar()
+
+    public void ConfirmarFesta()
+    {
+        if (Status is not EStatusFesta.Pendente)
+            throw new DomainException("A festa precisa estar pendente para ser confirmado.");
+
+        if(Contrato is null)           
+            throw new DomainException("A festa necessita de um contrato alocado para realizar essa ação.");
+        
+        Contrato.ConfirmarContrato();
+        Status = EStatusFesta.EmAndamento;
+    }
+
+    public decimal CancelarFesta()
+    {
+        if (Status is EStatusFesta.Concluida)
+            throw new DomainException("Não é possível cancelar uma festa já concluída.");
+
+        if (Status is EStatusFesta.Cancelada)
+            throw new DomainException("Não é possível cancelar uma festa já cancelada.");
+        
+        if(Contrato is null)
+            throw new DomainException("A festa necessita de um contrato alocado para realizar essa ação.");
+
+        Status = EStatusFesta.Cancelada;
+        Contrato.QuebrarContrato();
+        
+        return ObterValorMulta();
+    }
+
+    public decimal ObterValorFesta()
+    {
+        // Preço base
+        decimal precoBase = Tema.PrecoBase;
+
+        // + Quantidade de participantes
+        decimal precoExtraPorParticipante = (precoBase * 0.1m) * QuantidadeParticipantes;
+
+        return precoBase + precoExtraPorParticipante;
+    }
+
+    public decimal ObterValorMulta()
+    {
+        return ObterValorFesta() * 0.15m;
+    }
+
+    public sealed override void Validar()
     {
         AssertionConcern.AssertArgumentRange(QuantidadeParticipantes, 1, 20, "A quantidade de participantes deve ser entre 1 e 20 participantes.");
         
@@ -77,9 +124,9 @@ public class Festa : Entity, IAggregateRoot
         AssertionConcern.AssertArgumentNotNull(Cliente, "A festa deve estar associada a um cliente.");
         AssertionConcern.AssertStateFalse(ClienteId.Equals(Guid.Empty), "A festa deve estar associada a um cliente.");
 
-        // Contrato
-        AssertionConcern.AssertArgumentNotNull(Contrato, "A festa deve estar associada a um contrato.");
-        AssertionConcern.AssertStateFalse(ContratoId.Equals(Guid.Empty), "A festa deve estar associada a um contrato.");
+        // // Contrato
+        // AssertionConcern.AssertArgumentNotNull(Contrato, "A festa deve estar associada a um contrato.");
+        // AssertionConcern.AssertStateFalse(ContratoId.Equals(Guid.Empty), "A festa deve estar associada a um contrato.");
 
         // Administrador
         AssertionConcern.AssertArgumentNotNull(Administrador, "A festa deve estar associada a um administrador.");
