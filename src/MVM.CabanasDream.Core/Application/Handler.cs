@@ -6,17 +6,18 @@ namespace MVM.CabanasDream.Core.Application;
 
 public abstract class Handler<TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
     where TCommand : Command<TResponse>
+    where TResponse : class
 {
-    protected IMediatorHandler _mediator;
+    protected internal IMediatorHandler _mediator;
     
     protected Handler(IMediatorHandler mediator)
     {
         _mediator = mediator;
     }
     
-    public abstract Task<TResponse> Handle(TCommand request, CancellationToken cancellationToken);
+    public abstract Task<TResponse?> Handle(TCommand request, CancellationToken cancellationToken);
 
-    protected virtual async Task<bool> ValidarComando<TValidation>(TCommand command)
+    protected virtual bool ValidarComando<TValidation>(TCommand command)
         where TValidation : AbstractValidator<TCommand>, new()
     {
         var validate = command.FastValidation<TCommand, TValidation>();
@@ -24,7 +25,7 @@ public abstract class Handler<TCommand, TResponse> : IRequestHandler<TCommand, T
         foreach (var error in validate.Errors)
         {
             var notification = new DomainNotification(error.PropertyName, error.ErrorMessage);
-            await _mediator.PublicarNotificacao(notification);
+            _mediator.PublicarNotificacao(notification);
         }
 
         return validate.IsValid;

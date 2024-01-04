@@ -5,9 +5,9 @@ namespace MVM.CabanasDream.Core.Messages;
 public class DomainEvent : Event
 {
     public Guid AggregateId { get; init; }
-    public DomainEvent(Guid aggregateId)
+    
+    public DomainEvent()
     {
-        AggregateId = aggregateId;
-        MessageType = GetType().Name;
+        AggregateId = Guid.NewGuid();
     }
 }

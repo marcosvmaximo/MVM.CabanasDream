@@ -6,5 +6,6 @@ public abstract class Event : Message, INotification
 {
     protected Event()
     {
+        MessageType = GetType().Name;
     }
 }

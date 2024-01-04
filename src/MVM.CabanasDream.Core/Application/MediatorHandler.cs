@@ -1,5 +1,6 @@
 using MediatR;
 using MVM.CabanasDream.Core.Messages;
+using MVM.CabanasDream.Core.Messages.Common;
 
 namespace MVM.CabanasDream.Core.Application;
 
@@ -12,17 +13,20 @@ public class MediatorHandler : IMediatorHandler
         _mediator = mediator;
     }
     
-    public async Task PublicarEvento<TEvent>(TEvent evento) where TEvent : DomainEvent
+    public async Task PublicarEvento<TEvent>(TEvent evento) 
+        where TEvent : Event
     {
         await _mediator.Publish(evento);
     }
 
-    public async Task<TResponse> EnviarComando<TRequest, TResponse>(TRequest command) where TRequest : Command<TResponse>
+    public async Task<TResponse> EnviarComando<TRequest, TResponse>(TRequest command) 
+        where TRequest : Command<TResponse>
     {
         return await _mediator.Send(command);
     }
 
-    public async Task PublicarNotificacao<TNotification>(TNotification notification) where TNotification : DomainNotification
+    public async Task PublicarNotificacao<TNotification>(TNotification notification) 
+        where TNotification : DomainNotification
     {        
         await _mediator.Publish(notification);
     }

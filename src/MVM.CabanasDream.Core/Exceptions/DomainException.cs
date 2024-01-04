@@ -24,6 +24,6 @@ public class DomainException : Exception
     }
 
     [DoesNotReturn]
-    internal static void Throw(string? argument, Exception? value) =>
+    private static void Throw(string? argument, Exception? value) =>
         throw new DomainException(argument, value);
 }

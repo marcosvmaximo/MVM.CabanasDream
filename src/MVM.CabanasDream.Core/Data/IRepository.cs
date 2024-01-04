@@ -1,6 +1,5 @@
 namespace MVM.CabanasDream.Core.Data;
 
-public interface IRepository
+public interface IRepository : IDisposable
 {
-    
 }

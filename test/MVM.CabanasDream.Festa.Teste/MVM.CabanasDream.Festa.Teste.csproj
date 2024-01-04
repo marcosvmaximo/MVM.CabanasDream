@@ -22,4 +22,13 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Entities\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\MVM.CabanasDream.Core\MVM.CabanasDream.Core.csproj" />
+      <ProjectReference Include="..\..\src\MVM.CabanasDream.Festas.Domain\MVM.CabanasDream.Festas.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
