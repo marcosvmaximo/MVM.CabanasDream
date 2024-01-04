@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.8.1" />
-      <PackageReference Include="MediatR" Version="12.1.1" />
+      <ProjectReference Include="..\MVM.CabanasDream.Core\MVM.CabanasDream.Core.csproj" />
+      <ProjectReference Include="..\MVM.CabanasDream.Festas.Domain\MVM.CabanasDream.Festas.Domain.csproj" />
     </ItemGroup>
 
 </Project>
