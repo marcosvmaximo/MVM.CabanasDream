@@ -1,5 +1,6 @@
 using FluentValidation;
 using MediatR;
+using MVM.CabanasDream.Core.Bus;
 using MVM.CabanasDream.Core.Messages;
 
 namespace MVM.CabanasDream.Core.Application;
@@ -8,11 +9,11 @@ public abstract class Handler<TCommand, TResponse> : IRequestHandler<TCommand, T
     where TCommand : Command<TResponse>
     where TResponse : class
 {
-    protected internal IMediatorHandler _mediator;
+    protected IMessageBus _bus;
     
-    protected Handler(IMediatorHandler mediator)
+    protected Handler(IMessageBus bus)
     {
-        _mediator = mediator;
+        _bus = bus;
     }
     
     public abstract Task<TResponse?> Handle(TCommand request, CancellationToken cancellationToken);
@@ -24,8 +25,7 @@ public abstract class Handler<TCommand, TResponse> : IRequestHandler<TCommand, T
 
         foreach (var error in validate.Errors)
         {
-            var notification = new DomainNotification(error.PropertyName, error.ErrorMessage);
-            _mediator.PublicarNotificacao(notification);
+            _bus.PublishNotification(new DomainNotification(error.PropertyName, error.ErrorMessage));
         }
 
         return validate.IsValid;

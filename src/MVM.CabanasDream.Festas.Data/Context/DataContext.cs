@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using MVM.CabanasDream.Core.Application;
+using MVM.CabanasDream.Core.Bus;
 using MVM.CabanasDream.Core.Data;
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Messages;
@@ -12,11 +13,11 @@ namespace MVM.CabanasDream.Festas.Data.Context;
 
 public class DataContext : DbContext, IUnityOfWork
 {
-    private readonly IMediatorHandler _mediator;
+    private readonly IMessageBus _bus;
 
-    public DataContext(DbContextOptions<DataContext> opt, IMediatorHandler mediator) : base(opt)
+    public DataContext(DbContextOptions<DataContext> opt, IMessageBus bus) : base(opt)
     {
-        _mediator = mediator;
+        _bus = bus;
     }
 
     public DataContext(DbContextOptions<DataContext> opt) : base(opt)
@@ -49,11 +50,11 @@ public class DataContext : DbContext, IUnityOfWork
         
         if (result)
         {
-            await _mediator.PublishEvents(this);
+            await _bus.PublishEvents(this);
         }
         else
         {
-            await _mediator.PublicarNotificacao(
+            await _bus.PublishNotification(
                 new DomainNotification("Evento", "Falha ao salvar a entidade, eventos não foram enviados."));
         }
 

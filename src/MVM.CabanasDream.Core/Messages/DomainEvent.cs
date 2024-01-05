@@ -6,8 +6,8 @@ public class DomainEvent : Event
 {
     public Guid AggregateId { get; init; }
     
-    public DomainEvent()
+    public DomainEvent(Guid aggregateId)
     {
-        AggregateId = Guid.NewGuid();
+        AggregateId = aggregateId;
     }
 }

@@ -3,7 +3,7 @@ using MVM.CabanasDream.Festas.Domain.Entities;
 
 namespace MVM.CabanasDream.Festas.Domain.Interfaces;
 
-public interface IFestaRepository : IRepository
+public interface IFestaRepository : IRepository<Festa>
 {
     Task<Cliente?> ObterClientePorId(Guid requestClienteId);
     Task<Administrador?> ObterAdministradorPorId(Guid requestAdministradorId);

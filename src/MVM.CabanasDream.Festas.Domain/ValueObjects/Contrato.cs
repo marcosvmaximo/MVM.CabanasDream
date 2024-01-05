@@ -34,6 +34,7 @@ public class Contrato : ValueObject
         
         Assinado = true;
     }
+    
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Valor;

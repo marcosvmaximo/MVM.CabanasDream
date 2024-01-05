@@ -5,7 +5,7 @@ using MVM.CabanasDream.Core.Messages.Common;
 
 namespace MVM.CabanasDream.Core.Messages;
 
-public abstract class Command<TResponse> : Event, IRequest<TResponse>
+public abstract class Command<TResponse> : Message, IRequest<TResponse>
 {
     public virtual ValidationResult FastValidation<TCommand, TValidate>()
         where TCommand : Command<TResponse>

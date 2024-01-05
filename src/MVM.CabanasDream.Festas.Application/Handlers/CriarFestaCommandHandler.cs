@@ -1,5 +1,6 @@
 using System.Net;
 using MVM.CabanasDream.Core.Application;
+using MVM.CabanasDream.Core.Bus;
 using MVM.CabanasDream.Core.Messages;
 using MVM.CabanasDream.Festas.Application.Commands;
 using MVM.CabanasDream.Festas.Application.Validators;
@@ -15,7 +16,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand, CriarFestaVie
 {
     private readonly IFestaRepository _repository;
 
-    public CriarFestaCommandHandler(IMediatorHandler mediator, IFestaRepository repository) : base(mediator)
+    public CriarFestaCommandHandler(IMessageBus bus, IFestaRepository repository) : base(bus)
     {
         _repository = repository;
     }
@@ -28,7 +29,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand, CriarFestaVie
         Tema? tema = await _repository.ObterTemaPorId(request.TemaId);
         if (tema is null)
         {
-            await _mediator.PublicarNotificacao(new DomainNotification("Tema informado não foi encontrado ou não existe"));
+            await _bus.PublishNotification(new DomainNotification("Tema","Tema informado não foi encontrado ou não existe"));
             return null;
         }
         // Verificar se Tema está disponiveis nas datas informadas
@@ -36,7 +37,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand, CriarFestaVie
         Cliente? cliente = await _repository.ObterClientePorId(request.ClienteId);
         if (cliente is null)
         {
-            await _mediator.PublicarNotificacao(new DomainNotification("Cliente informado não foi encontrado ou não existe"));
+            await _bus.PublishNotification(new DomainNotification("Cliente","Cliente informado não foi encontrado ou não existe"));
             return null;
         }
         
@@ -45,7 +46,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand, CriarFestaVie
         Administrador? administrador = await _repository.ObterAdministradorPorId(request.AdministradorId);
         if (administrador is null)
         {
-            await _mediator.PublicarNotificacao(new DomainNotification("Administrador informado não foi encontrado ou não existe"));
+            await _bus.PublishNotification(new DomainNotification("Administrador","Administrador informado não foi encontrado ou não existe"));
             return null;
         }
 

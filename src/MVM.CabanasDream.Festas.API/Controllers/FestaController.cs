@@ -1,6 +1,8 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MVM.CabanasDream.Core.Application;
-using MVM.CabanasDream.Festas.API.Controllers.Common;
+using MVM.CabanasDream.Core.Bus;
+using MVM.CabanasDream.Core.Messages;
 using MVM.CabanasDream.Festas.Application.Commands;
 using MVM.CabanasDream.Festas.Application.ViewModels;
 using MVM.CabanasDream.Festas.Domain;
@@ -9,17 +11,20 @@ using MVM.CabanasDream.Festas.Domain.Interfaces;
 namespace MVM.CabanasDream.Festas.API.Controllers;
 
 [Route("api/v1/")]
-public class FestaController : ControllerCommon
+public class FestaController : ControllerBase
 {
     private readonly IFestaRepository _repository;
-    private readonly IMediatorHandler _mediator;
-    private readonly INotificationHandler _notification;
+    private readonly IMessageBus _mediator;
+    private readonly DomainNotificationHandler _notification;
 
-    public FestaController(IFestaRepository repository, IMediatorHandler mediator, INotificationHandler notification)
+    public FestaController(
+        IFestaRepository repository,
+        IMessageBus mediator,
+        INotificationHandler<DomainNotification> notification)
     {
         _repository = repository;
         _mediator = mediator;
-        _notification = notification;
+        _notification = (DomainNotificationHandler)notification;
     }
     
     [HttpGet("{id:guid}")]
@@ -32,15 +37,15 @@ public class FestaController : ControllerCommon
     [HttpPost]
     public async Task<ActionResult<Festa?>> CriarFesta([FromBody] CriarFestaCommand request)
     {
-        var response = await _mediator.EnviarComando<CriarFestaCommand, CriarFestaViewModel>(request);
-
-        if (response is null)
+        var response = await _mediator.SendCommand<CriarFestaCommand, CriarFestaViewModel>(request);
+        
+        if (await _notification.AnyNotification())
             return BadRequest(new
             {
                 HttpCode = 400,
                 Sucess = false,
                 Message = "Ocorreu un problema ao enviar a requisição.",
-                Data = _notification.GetNotifications()
+                Data = await _notification.GetNotifications()
             });
         
         return Ok(new
