@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "saHKS6uhKDRh2P6wXIxlDo1t2E3NON9YlfjkofiTK44z7ISCQmg4fLpasWLoEzG77OsiddmlrzxPxnCfqolipQ==",
+  "success": true,
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/MVM.CabanasDream.Festas.Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/marcosmaximo/.nuget/packages/fluentvalidation/11.8.1/fluentvalidation.11.8.1.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/mediatr/12.1.1/mediatr.12.1.1.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

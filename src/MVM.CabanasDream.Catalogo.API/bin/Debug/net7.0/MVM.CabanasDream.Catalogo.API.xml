@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MVM.CabanasDream.Catalogo.API</name>
+    </assembly>
+    <members>
+        <member name="M:MVM.CabanasDream.Catalogo.API.Controllers.TemaController.CadastrarTema(MVM.CabanasDream.Catalogo.API.ViewModels.TemaViewModel)">
+            <summary>
+            Obtem todas empresas cadastradas.
+            </summary>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>

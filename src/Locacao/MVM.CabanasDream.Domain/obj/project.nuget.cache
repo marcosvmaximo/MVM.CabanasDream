@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "HWEmji1N/XGeas21XMLN+0giavRTIWA50Mq0e9jKtPy11YO/xP/Q7IeALMKkF8GrfoW0LXBJAN7xH1GNayRJFw==",
+  "success": false,
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/Locacao/MVM.CabanasDream.Domain/MVM.CabanasDream.Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/marcosmaximo/.nuget/packages/fluentvalidation/11.8.0/fluentvalidation.11.8.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/mediatr/12.1.1/mediatr.12.1.1.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore/7.0.13/microsoft.entityframeworkcore.7.0.13.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.13/microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.13/microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.dependencyinjection/7.0.0/microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.logging/7.0.0/microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project '/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/Locacao/MVM.CabanasDream.Core/MVM.CabanasDream.Core.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/Locacao/MVM.CabanasDream.Core/MVM.CabanasDream.Core.csproj",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+}

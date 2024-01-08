@@ -1,0 +1,15 @@
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/bin/Debug/net7.0/MVM.CabanasDream.Festas.Domain.deps.json
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/bin/Debug/net7.0/MVM.CabanasDream.Festas.Domain.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/bin/Debug/net7.0/MVM.CabanasDream.Festas.Domain.pdb
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/bin/Debug/net7.0/MVM.CabanasDream.Core.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/bin/Debug/net7.0/MVM.CabanasDream.Core.pdb
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.csproj.AssemblyReference.cache
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.AssemblyInfoInputs.cache
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.AssemblyInfo.cs
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.csproj.CoreCompileInputs.cache
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.csproj.CopyComplete
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/refint/MVM.CabanasDream.Festas.Domain.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/MVM.CabanasDream.Festas.Domain.pdb
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Domain/obj/Debug/net7.0/ref/MVM.CabanasDream.Festas.Domain.dll
