@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MVM.CabanasDream.Festas.API.Configurations;
+using MVM.CabanasDream.Festas.API.Configurations.Middlewares;
 using MVM.CabanasDream.Festas.API.Configurations.Services;
 using MVM.CabanasDream.Festas.Data.Context;
 
@@ -28,6 +29,18 @@ app.UseSwaggerConfig(app.Environment);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseDeveloperExceptionPage();
+// }
+// else
+// {
+//     app.UseExceptionHandler("/Home/Error");
+//     app.UseHsts();
+// }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 

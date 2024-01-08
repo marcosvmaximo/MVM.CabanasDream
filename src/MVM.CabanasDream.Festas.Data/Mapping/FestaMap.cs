@@ -16,6 +16,11 @@ public class FestaMap : IEntityTypeConfiguration<Festa>
                 .HasColumnName("id")
                 .HasColumnType("varchar(32)")
                 .IsRequired();
+            
+            builder.Property(f => f.TimeStamp)
+                .HasColumnName("TimeStamp")
+                .HasColumnType("datetime(6)")
+                .IsRequired();
 
             builder.Property(f => f.QuantidadeParticipantes)
                 .HasColumnName("quantidade_participantes")
@@ -42,7 +47,7 @@ public class FestaMap : IEntityTypeConfiguration<Festa>
                 .HasColumnType("varchar(500)");
 
             builder.Property(f => f.Status)
-                .HasColumnName("status")
+                .HasColumnName("festa_status")
                 .HasColumnType("int")
                 .IsRequired();
 
@@ -50,7 +55,7 @@ public class FestaMap : IEntityTypeConfiguration<Festa>
             {
                 c.Property(x => x.Assinado)
                     .HasColumnName("assinado")
-                    .HasColumnType("bool")
+                    .HasColumnType("tinyint(1)")
                     .IsRequired();
 
                 c.Property(x => x.Valor)
@@ -62,29 +67,29 @@ public class FestaMap : IEntityTypeConfiguration<Festa>
                     .HasColumnName("multa")
                     .HasColumnType("decimal(10, 2)")
                     .IsRequired();
-
+                
+                c.Property(x => x.Status)
+                    .HasColumnName("contrato_status")
+                    .HasColumnType("int")
+                    .IsRequired();
             });
             
             // Mapeamento da relação muitos-para-um com Tema
             builder.HasOne(f => f.Tema)
-                .WithMany()
+                .WithMany(t => t.Festas)
                 .HasForeignKey(f => f.TemaId)
-                .HasConstraintName("fk_Festa_Temas_id") // Nome exclusivo para esta restrição
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasPrincipalKey(t => t.Id);
 
             // Mapeamento da relação muitos-para-um com Cliente
             builder.HasOne(f => f.Cliente)
                 .WithMany(c => c.Festas)
                 .HasForeignKey(x => x.ClienteId)
-                .HasConstraintName("fk_Festa_Clientes_id") // Nome exclusivo para esta restrição
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasPrincipalKey(c => c.Id);
 
             // Mapeamento da relação muitos-para-um com Administrador
             builder.HasOne(f => f.Administrador)
                 .WithMany(a => a.Festas)
                 .HasForeignKey(x => x.AdministradorId)
-                .HasConstraintName("fk_Festa_Administradores_id") // Nome exclusivo para esta restrição
-                .OnDelete(DeleteBehavior.Cascade);
-
+                .HasPrincipalKey(a => a.Id);
         }
     }

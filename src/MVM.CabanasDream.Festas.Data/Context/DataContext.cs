@@ -23,6 +23,7 @@ public class DataContext : DbContext, IUnityOfWork
     public DataContext(DbContextOptions<DataContext> opt) : base(opt)
     {
     }
+    
     public DbSet<Festa> Festas { get; set; }
     public DbSet<Tema> Temas { get; set; }
     public DbSet<Cliente> Clientes { get; set; }

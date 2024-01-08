@@ -12,6 +12,11 @@ public class AdministradorMap : IEntityTypeConfiguration<Administrador>
 
         builder.HasKey(c => c.Id);
         
+        builder.Property(a => a.TimeStamp)
+            .HasColumnName("TimeStamp")
+            .HasColumnType("datetime(6)")
+            .IsRequired();
+        
         builder.Property(a => a.Id)
             .HasColumnName("id")
             .HasColumnType("varchar(32)")
@@ -41,15 +46,11 @@ public class AdministradorMap : IEntityTypeConfiguration<Administrador>
             .HasColumnName("nivel_permissao")
             .HasColumnType("int")
             .IsRequired();
-
-        // // Índice único para CPF e RG
-        // builder.HasIndex(a => new { a.Cpf, a.Rg }).IsUnique();
-
-        // Mapeamento da relação um-para-muitos com Festa
-        builder.HasMany(a => a.Festas)
-            .WithOne(x => x.Administrador)
-            .HasForeignKey(x => x.AdministradorId)
-            .HasConstraintName("fk_Festa_Administradores_id")
-            .OnDelete(DeleteBehavior.Cascade);
+        //
+        // // Mapeamento da relação um-para-muitos com Festa
+        // builder.HasMany(a => a.Festas)
+        //     .WithOne(x => x.Administrador)
+        //     .HasForeignKey(x => x.AdministradorId)
+        //     .HasPrincipalKey(a => a.Id);
     }
 }

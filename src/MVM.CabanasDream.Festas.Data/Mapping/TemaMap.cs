@@ -16,6 +16,11 @@ public class TemaMap : IEntityTypeConfiguration<Tema>
             .HasColumnName("id")
             .HasColumnType("varchar(32)")
             .IsRequired();
+        
+        builder.Property(t => t.TimeStamp)
+            .HasColumnName("TimeStamp")
+            .HasColumnType("datetime(6)")
+            .IsRequired();
 
         builder.Property(t => t.Nome)
             .HasColumnName("nome")
@@ -24,7 +29,7 @@ public class TemaMap : IEntityTypeConfiguration<Tema>
 
         builder.Property(t => t.Disponibilidade)
             .HasColumnName("disponibilidade")
-            .HasColumnType("boolean")
+            .HasColumnType("tinyint(1)")
             .IsRequired();
 
         builder.Property(t => t.PrecoBase)

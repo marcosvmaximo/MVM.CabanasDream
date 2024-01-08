@@ -11,17 +11,26 @@ public class ClienteMap : IEntityTypeConfiguration<Cliente>
             builder.ToTable("Clientes");
 
             builder.HasKey(c => c.Id);
-
+            
             builder.Property(p => p.Id)
                 .HasColumnName("id")
                 .HasColumnType("varchar(32)")
                 .IsRequired();
             
+            builder.Property(a => a.TimeStamp)
+                .HasColumnName("TimeStamp")
+                .HasColumnType("datetime(6)")
+                .IsRequired();
+            
             builder.Property(c => c.Nome)
                 .HasColumnName("nome_completo")
                 .HasColumnType("varchar(100)")
-                .IsRequired()
-                .HasMaxLength(100);
+                .IsRequired();
+            
+            builder.Property(c => c.DataNascimento)
+                .HasColumnName("data_nascimento")
+                .HasColumnType("date")
+                .IsRequired();
 
             builder.Property(c => c.Cpf)
                 .HasColumnName("cpf")
@@ -74,14 +83,5 @@ public class ClienteMap : IEntityTypeConfiguration<Cliente>
                     .HasColumnName("email")
                     .HasColumnType("varchar(100)");
             });
-            
-            builder.Property(c => c.DataNascimento)
-                .HasColumnName("data_nascimento")
-                .HasColumnType("date")
-                .IsRequired();
-            
-            //
-            // builder.HasIndex(c => new { c.Cpf, c.Rg })
-            //     .IsUnique();
         }
     }

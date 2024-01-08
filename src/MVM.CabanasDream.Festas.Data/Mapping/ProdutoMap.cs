@@ -16,10 +16,20 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
             .HasColumnName("id")
             .HasColumnType("varchar(32)")
             .IsRequired();
+        
+        builder.Property(p => p.TimeStamp)
+            .HasColumnName("TimeStamp")
+            .HasColumnType("datetime(6)")
+            .IsRequired();
 
         builder.Property(p => p.Nome)
             .HasColumnName("nome")
             .HasColumnType("varchar(100)")
+            .IsRequired();
+        
+        builder.Property(p => p.Tipo)
+            .HasColumnName("tipo_produto")
+            .HasColumnType("int")
             .IsRequired();
 
         builder.Property(p => p.NumeroSerie)
@@ -40,8 +50,7 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
         builder.HasOne(p => p.Tema)
             .WithMany(t => t.Produtos)
             .HasForeignKey(p => p.TemaId)
-            .HasConstraintName("fk_Produto_Temas_id")
-            .OnDelete(DeleteBehavior.Restrict);
+            .HasPrincipalKey(t => t.Id);
 
     }
 }

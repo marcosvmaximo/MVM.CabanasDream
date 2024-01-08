@@ -47,3 +47,4 @@
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/obj/Debug/net7.0/ref/MVM.CabanasDream.Festas.API.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/bin/Debug/net7.0/MVM.CabanasDream.Festas.Application.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/bin/Debug/net7.0/MVM.CabanasDream.Festas.Application.pdb
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/bin/Debug/net7.0/Newtonsoft.Json.dll
