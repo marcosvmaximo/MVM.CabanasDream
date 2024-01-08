@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Festa.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Festas.API", "src\MVM.CabanasDream.Festas.API\MVM.CabanasDream.Festas.API.csproj", "{88C1A4F7-D455-42B4-99FB-A91B1FDC7F04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVM.CabanasDream.Catalogo.Teste", "test\MVM.CabanasDream.Catalogo.Teste\MVM.CabanasDream.Catalogo.Teste.csproj", "{80A5F5A2-0BB1-4400-AB2E-62EFC3DD6235}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,7 @@ Global
 		{C3AB4FB6-6E27-4AF1-BEBD-B43118E81AB9} = {ACB7A94C-1640-494F-9DA2-BB285195C5D7}
 		{CD0FDC5E-1420-4709-9578-969B2E357306} = {ABCB2280-B582-45F5-BA77-59E58BED8E0D}
 		{88C1A4F7-D455-42B4-99FB-A91B1FDC7F04} = {C3AB4FB6-6E27-4AF1-BEBD-B43118E81AB9}
+		{80A5F5A2-0BB1-4400-AB2E-62EFC3DD6235} = {ABCB2280-B582-45F5-BA77-59E58BED8E0D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A6EB353E-7C39-4087-8896-3FC0D6777F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -76,5 +79,9 @@ Global
 		{88C1A4F7-D455-42B4-99FB-A91B1FDC7F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C1A4F7-D455-42B4-99FB-A91B1FDC7F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C1A4F7-D455-42B4-99FB-A91B1FDC7F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A5F5A2-0BB1-4400-AB2E-62EFC3DD6235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A5F5A2-0BB1-4400-AB2E-62EFC3DD6235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A5F5A2-0BB1-4400-AB2E-62EFC3DD6235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A5F5A2-0BB1-4400-AB2E-62EFC3DD6235}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
