@@ -1,4 +1,5 @@
 using MediatR;
+using MVM.CabanasDream.Core.Application;
 using MVM.CabanasDream.Core.Messages;
 using MVM.CabanasDream.Core.Messages.Common;
 
@@ -12,6 +13,6 @@ public interface IMessageBus
     Task PublishNotification<TNotification>(TNotification notification) 
         where TNotification : INotification;
     
-    Task<TResponse?> SendCommand<TRequest, TResponse>(TRequest command) 
-        where TRequest : Command<TResponse>;
+    Task<CommandResult> SendCommand<TRequest>(TRequest command) 
+        where TRequest : Command;
 }

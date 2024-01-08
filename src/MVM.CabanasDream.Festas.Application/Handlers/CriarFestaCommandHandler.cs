@@ -54,7 +54,8 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
             message.DataRealizacao,
             message.DataRetirada,
             message.DataDevolucao,
-            tema, cliente,
+            tema, 
+            cliente,
             administrador,
             message.Observacao);
         

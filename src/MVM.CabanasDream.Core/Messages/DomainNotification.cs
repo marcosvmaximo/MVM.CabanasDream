@@ -11,6 +11,8 @@ public class DomainNotification : Message, INotification
         Property = property;
         Message = message;
         AttemptedValue = attemptedValue;
+        
+        MessageType = GetType().Name;
     }
 
     public DomainNotification(string property, string message) : this(property, message, null){}

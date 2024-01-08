@@ -8,6 +8,11 @@ namespace MVM.CabanasDream.Core.Messages;
 
 public abstract class Command : Message, IRequest<CommandResult>
 {
+    public Command()
+    {
+        MessageType = GetType().Name;
+    }
+    
     public virtual ValidationResult FastValidation<TCommand, TValidate>()
         where TCommand : Command
         where TValidate : AbstractValidator<TCommand>, new()

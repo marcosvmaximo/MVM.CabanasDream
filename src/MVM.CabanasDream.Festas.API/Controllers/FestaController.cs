@@ -51,46 +51,49 @@ public class FestaController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Festa?>> CriarFesta([FromBody] CriarFestaCommand request)
     {
-        var response = await _mediator.SendCommand<CriarFestaCommand, CriarFestaViewModel>(request);
-        
-        if (await _notification.AnyNotification())
-            return BadRequest(new
-            {
-                HttpCode = 400,
-                Sucess = false,
-                Message = "Ocorreu un problema ao enviar a requisição.",
-                Data = await _notification.GetNotifications()
-            });
-        
-        return Ok(new
+        var response = await _mediator.SendCommand(request);
+
+        if (response.Success)
         {
-            HttpCode = 200,
-            Sucess = true,
-            Message = "Requisição enviada com sucesso.",
+            return Ok(new
+            {
+                HttpCode = 200,
+                Sucess = true,
+                Message = "Requisição enviada com sucesso.",
+                Data = response.Data
+            });
+        }
+            
+        return BadRequest(new
+        {
+            HttpCode = 400,
+            Sucess = false,
+            Message = "Ocorreu un problema ao enviar a requisição.",
+            Errors = response.Errors
         });
     }
-
-    [HttpPatch]
-    public async Task<ActionResult<Festa?>> ConfirmarFesta()
-    {
-        
-    }
-    
-    [HttpPatch]
-    public async Task<ActionResult<Festa?>> RetirarFesta()
-    {
-        
-    }
-    
-    [HttpPatch]
-    public async Task<ActionResult<Festa?>> FinalizarFesta()
-    {
-        
-    }
-    
-    [HttpPatch]
-    public async Task<ActionResult<Festa?>> CancelarFesta()
-    {
-        
-    }
+    //
+    // [HttpPatch]
+    // public async Task<ActionResult<Festa?>> ConfirmarFesta()
+    // {
+    //     
+    // }
+    //
+    // [HttpPatch]
+    // public async Task<ActionResult<Festa?>> RetirarFesta()
+    // {
+    //     
+    // }
+    //
+    // [HttpPatch]
+    // public async Task<ActionResult<Festa?>> FinalizarFesta()
+    // {
+    //     
+    // }
+    //
+    // [HttpPatch]
+    // public async Task<ActionResult<Festa?>> CancelarFesta()
+    // {
+    //     
+    // }
 }

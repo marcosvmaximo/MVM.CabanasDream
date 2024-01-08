@@ -43,5 +43,6 @@ public abstract class Handler<TCommand> : IRequestHandler<TCommand, CommandResul
     protected void AddError(string propertyName, string errorMessage)
     {
         ValidationResult.Errors.Add(new ValidationFailure(propertyName, errorMessage));
+        _bus.PublishNotification(new DomainNotification(propertyName, errorMessage));
     }
 }
