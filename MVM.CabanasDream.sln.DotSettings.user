@@ -1,4 +1,0 @@
-﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0229ac84_002D06f6_002D4036_002D8eee_002D5aa4548d4ef7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Testes&amp;gt;\&amp;lt;MVM.CabanasDream.Festa.Teste&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Project Location="/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/test/MVM.CabanasDream.Festa.Teste" Presentation="&amp;lt;Testes&amp;gt;\&amp;lt;MVM.CabanasDream.Festa.Teste&amp;gt;" /&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
