@@ -3,7 +3,7 @@ using MVM.CabanasDream.Festas.Application.ViewModels;
 
 namespace MVM.CabanasDream.Festas.Application.Commands;
 
-public class RetirarFestaCommand : Command<RetirarFestaViewModel>
+public class RetirarFestaCommand : Command
 {
     
 }

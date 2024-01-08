@@ -6,13 +6,13 @@ using MVM.CabanasDream.Festas.Application.ViewModels;
 
 namespace MVM.CabanasDream.Festas.Application.Handlers;
 
-public class RetirarFestaCommandHandler : Handler<RetirarFestaCommand, RetirarFestaViewModel>
+public class RetirarFestaCommandHandler : Handler<RetirarFestaCommand>
 {
     public RetirarFestaCommandHandler(IMessageBus bus) : base(bus)
     {
     }
 
-    public override Task<RetirarFestaViewModel?> Handle(RetirarFestaCommand request, CancellationToken cancellationToken)
+    public override Task<CommandResult> Handle(RetirarFestaCommand request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

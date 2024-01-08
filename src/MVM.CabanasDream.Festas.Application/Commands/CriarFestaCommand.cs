@@ -4,7 +4,7 @@ using MVM.CabanasDream.Festas.Application.ViewModels;
 
 namespace MVM.CabanasDream.Festas.Application.Commands;
 
-public class CriarFestaCommand : Command<CriarFestaViewModel>
+public class CriarFestaCommand : Command
 {
     public Guid TemaId { get; set; }   
     public Guid ClienteId { get; set; }

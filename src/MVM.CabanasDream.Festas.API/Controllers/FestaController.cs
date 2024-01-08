@@ -27,6 +27,20 @@ public class FestaController : ControllerBase
         _notification = (DomainNotificationHandler)notification;
     }
     
+    [HttpGet("cliente/{idCliente:guid}")]
+    public async Task<ActionResult<Festa?>> ObterFestasPorCliente([FromRoute] Guid idCliente)
+    {
+        var result = await _repository.ObterFestaPorCliente(idCliente);
+        return Ok(result);
+    }
+    
+    [HttpGet("")]
+    public async Task<ActionResult<Festa?>> ObterFestas()
+    {
+        var result = await _repository.ObterTodasFestas();
+        return Ok(result);
+    }
+    
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<Festa?>> ObterFestaPorId([FromRoute] Guid id)
     {
@@ -54,5 +68,29 @@ public class FestaController : ControllerBase
             Sucess = true,
             Message = "Requisição enviada com sucesso.",
         });
+    }
+
+    [HttpPatch]
+    public async Task<ActionResult<Festa?>> ConfirmarFesta()
+    {
+        
+    }
+    
+    [HttpPatch]
+    public async Task<ActionResult<Festa?>> RetirarFesta()
+    {
+        
+    }
+    
+    [HttpPatch]
+    public async Task<ActionResult<Festa?>> FinalizarFesta()
+    {
+        
+    }
+    
+    [HttpPatch]
+    public async Task<ActionResult<Festa?>> CancelarFesta()
+    {
+        
     }
 }

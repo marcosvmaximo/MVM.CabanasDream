@@ -5,13 +5,13 @@ using MVM.CabanasDream.Festas.Application.ViewModels;
 
 namespace MVM.CabanasDream.Festas.Application.Handlers;
 
-public class FinalizarFestaCommandHandler : Handler<FinalizarFestaCommand, FinalizarFestaViewModel>
+public class FinalizarFestaCommandHandler : Handler<FinalizarFestaCommand>
 {
     public FinalizarFestaCommandHandler(IMessageBus bus) : base(bus)
     {
     }
 
-    public override Task<FinalizarFestaViewModel?> Handle(FinalizarFestaCommand request, CancellationToken cancellationToken)
+    public override Task<CommandResult> Handle(FinalizarFestaCommand request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
