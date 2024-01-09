@@ -51,6 +51,11 @@ public class FestaController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Festa?>> CriarFesta([FromBody] CriarFestaCommand request)
     {
+        if (!ModelState.IsValid)
+        {
+            
+        }
+        
         var response = await _mediator.SendCommand(request);
 
         if (response.Success)
@@ -68,7 +73,7 @@ public class FestaController : ControllerBase
         {
             HttpCode = 400,
             Sucess = false,
-            Message = "Ocorreu un problema ao enviar a requisição.",
+            Message = "Ocorreu um problema ao enviar a requisição.",
             Errors = response.Errors
         });
     }

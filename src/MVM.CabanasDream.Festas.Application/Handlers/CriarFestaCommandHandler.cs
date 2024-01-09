@@ -42,7 +42,9 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         if (possuiFestasAgendadas) return CustomResponse();
 
         var festa = MapFesta(message, tema!, cliente!, administrador!);
+        
         await _repository.SalvarFesta(festa);
+        await _repository.UnityOfWork.Commit();
         
         return CustomResponse(MapViewModel(festa));
     }

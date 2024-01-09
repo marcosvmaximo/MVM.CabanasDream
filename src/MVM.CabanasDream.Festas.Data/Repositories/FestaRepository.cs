@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MVM.CabanasDream.Core.Data;
 using MVM.CabanasDream.Festas.Data.Context;
 using MVM.CabanasDream.Festas.Domain;
 using MVM.CabanasDream.Festas.Domain.Entities;
@@ -12,12 +13,15 @@ public class FestaRepository : IFestaRepository
 {
     private readonly DataContext _context;
     private readonly ILogger<FestaRepository> _logger;
-
     public FestaRepository(DataContext context, ILogger<FestaRepository> logger)
     {
+        
         _context = context;
         _logger = logger;
     }
+
+    public IUnityOfWork UnityOfWork => _context;
+    
     public async Task<Cliente?> ObterClientePorId(Guid clienteId)
     {
         try
@@ -136,7 +140,7 @@ public class FestaRepository : IFestaRepository
         }
     }
 
-    public async Task SalvarFesta(Festas.Domain.Festa festa)
+    public async Task SalvarFesta(Festa festa)
     {
         try
         {
