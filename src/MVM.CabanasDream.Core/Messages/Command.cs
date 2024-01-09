@@ -6,7 +6,7 @@ using MVM.CabanasDream.Core.Messages.Common;
 
 namespace MVM.CabanasDream.Core.Messages;
 
-public abstract class Command : Message, IRequest<CommandResult>
+public abstract class Command : Message, IRequest<CommandResponse>
 {
     public Command()
     {

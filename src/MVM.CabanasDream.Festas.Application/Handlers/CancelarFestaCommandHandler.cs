@@ -11,7 +11,7 @@ public class CancelarFestaCommandHandler : Handler<CancelarFestaCommand>
     {
     }
 
-    public override Task<CommandResult> Handle(CancelarFestaCommand request, CancellationToken cancellationToken)
+    public override Task<CommandResponse> Handle(CancelarFestaCommand request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

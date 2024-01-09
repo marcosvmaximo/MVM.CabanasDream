@@ -13,6 +13,6 @@ public interface IMessageBus
     Task PublishNotification<TNotification>(TNotification notification) 
         where TNotification : INotification;
     
-    Task<CommandResult> SendCommand<TRequest>(TRequest command) 
+    Task<CommandResponse> SendCommand<TRequest>(TRequest command) 
         where TRequest : Command;
 }

@@ -12,7 +12,7 @@ public class RetirarFestaCommandHandler : Handler<RetirarFestaCommand>
     {
     }
 
-    public override Task<CommandResult> Handle(RetirarFestaCommand request, CancellationToken cancellationToken)
+    public override Task<CommandResponse> Handle(RetirarFestaCommand request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

@@ -1,30 +1,26 @@
+using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MVM.CabanasDream.Core.Application;
 using MVM.CabanasDream.Core.Bus;
 using MVM.CabanasDream.Core.Messages;
+using MVM.CabanasDream.Festas.API.Controllers.Common;
 using MVM.CabanasDream.Festas.Application.Commands;
-using MVM.CabanasDream.Festas.Application.ViewModels;
 using MVM.CabanasDream.Festas.Domain;
 using MVM.CabanasDream.Festas.Domain.Interfaces;
 
 namespace MVM.CabanasDream.Festas.API.Controllers;
 
 [Route("api/v1/")]
-public class FestaController : ControllerBase
+public class FestaController : ControllerCommon
 {
     private readonly IFestaRepository _repository;
-    private readonly IMessageBus _mediator;
-    private readonly DomainNotificationHandler _notification;
 
     public FestaController(
         IFestaRepository repository,
-        IMessageBus mediator,
-        INotificationHandler<DomainNotification> notification)
+        IMessageBus messager,
+        INotificationHandler<DomainNotification> notification) : base(messager, notification)
     {
         _repository = repository;
-        _mediator = mediator;
-        _notification = (DomainNotificationHandler)notification;
     }
     
     [HttpGet("cliente/{idCliente:guid}")]
@@ -47,35 +43,21 @@ public class FestaController : ControllerBase
         var result = await _repository.ObterFestaPorId(id);
         return Ok(result);
     }
+
     
     [HttpPost]
     public async Task<ActionResult<Festa?>> CriarFesta([FromBody] CriarFestaCommand request)
     {
         if (!ModelState.IsValid)
-        {
-            
-        }
+            return await CustomResponse(ModelState);
         
-        var response = await _mediator.SendCommand(request);
-
+        var response = await _messager.SendCommand(request);
+        
         if (response.Success)
         {
-            return Ok(new
-            {
-                HttpCode = 200,
-                Sucess = true,
-                Message = "Requisição enviada com sucesso.",
-                Data = response.Data
-            });
+            return await CustomResponse(response, HttpStatusCode.Created);
         }
-            
-        return BadRequest(new
-        {
-            HttpCode = 400,
-            Sucess = false,
-            Message = "Ocorreu um problema ao enviar a requisição.",
-            Errors = response.Errors
-        });
+        return await CustomResponse(response);
     }
     //
     // [HttpPatch]

@@ -26,7 +26,7 @@ public class MessageBus : IMessageBus
         await _mediator.Publish(notification);
     }
 
-    public async Task<CommandResult> SendCommand<TRequest>(TRequest command) 
+    public async Task<CommandResponse> SendCommand<TRequest>(TRequest command) 
         where TRequest : Command
     {
         return await _mediator.Send(command);

@@ -24,29 +24,29 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         _repository = repository;
     }
 
-    public override async Task<CommandResult> Handle(CriarFestaCommand message, CancellationToken cancellationToken)
+    public override async Task<CommandResponse> Handle(CriarFestaCommand message, CancellationToken cancellationToken)
     {
         bool commandIsValid = ValidarComando<CriarFestaCommandValidator>(message);
-        if (!commandIsValid) return CustomResponse();
+        if (!commandIsValid) return ReturnResponse();
 
         var tema = await GetTema(message.TemaId);
         var administrador = await GetAdministrador(message.AdministradorId);
         var cliente = await GetCliente(message.ClienteId);
         
-        if (!ValidationResult.IsValid) return CustomResponse();
+        if (!ValidationResult.IsValid) return ReturnResponse(HttpStatusCode.NotFound);
         
         bool possuiFestasAgendadas = await TemFestasAgendadasParaTemaNoPeriodo(
             message.TemaId,
             message.DataRetirada,
             message.DataDevolucao);
-        if (possuiFestasAgendadas) return CustomResponse();
+        if (possuiFestasAgendadas) return ReturnResponse();
 
         var festa = MapFesta(message, tema!, cliente!, administrador!);
         
         await _repository.SalvarFesta(festa);
         await _repository.UnityOfWork.Commit();
         
-        return CustomResponse(MapViewModel(festa));
+        return ReturnResponse(MapViewModel(festa));
     }
 
     private Festa MapFesta(CriarFestaCommand message, Tema tema, Cliente cliente, Administrador administrador)
