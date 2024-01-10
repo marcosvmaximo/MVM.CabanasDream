@@ -51,42 +51,32 @@ public abstract class ControllerCommon : ControllerBase
         
         return code switch
         {
-            HttpStatusCode.BadRequest => BadRequest(new
-            {
-                httpCode = (int)HttpStatusCode.BadRequest,
-                message = "Ocorreu uma falha ao enviar a requisição.",
-                success = false,
-                errors = response.Errors
-            }),
+            HttpStatusCode.BadRequest => BadRequest(BaseResponse<Dictionary<string, object>>.FailureResponse(response.Errors)),
             
-            HttpStatusCode.NotFound => NotFound(new
-            {
-                httpCode = (int)HttpStatusCode.NotFound,
-                message = "Dado informado não encontrado.",
-                success = true,
-                errors = response.Errors
-            }),
+            HttpStatusCode.NotFound => NotFound(BaseResponse<Dictionary<string, object>>.FailureResponse(response.Errors, (int)HttpStatusCode.NotFound, "Dado informado não encontrado.", true)),
 
+            HttpStatusCode.Created => Created("Post", BaseResponse<object>.SucessResponse(response.Data, (int)HttpStatusCode.Created, "Conteudo criado com sucesso.")),
+            
             HttpStatusCode.NoContent => NoContent(),
 
-            HttpStatusCode.Created => CreatedAtAction(null, new
-            {
-                httpCode = (int)HttpStatusCode.Created,
-                message = "Conteudo criado com sucesso.",
-                success = true,
-                data = response.Data
-            }),
-            
-            _ => Ok(new
-            {
-                httpCode = (int)HttpStatusCode.OK,
-                message = "Requisição enviada com sucesso.",
-                success = true,
-                data = response.Data
-            })
+            _ => Ok(BaseResponse<object>.SucessResponse(response.Data))
         };
     }
-    
+    protected async Task<ActionResult> CustomResponse(HttpStatusCode? code, object data = null)
+    {
+        return code switch
+        {
+            HttpStatusCode.BadRequest => BadRequest(BaseResponse<object>.FailureResponse(data)),
+            
+            HttpStatusCode.NotFound => NotFound(BaseResponse<object>.FailureResponse(data, (int)HttpStatusCode.NotFound, "Dado informado não encontrado.", true)),
+
+            HttpStatusCode.Created => Created("Post", BaseResponse<object>.SucessResponse(data, (int)HttpStatusCode.Created, "Conteudo criado com sucesso.")),
+            
+            HttpStatusCode.NoContent => NoContent(),
+
+            _ => Ok(BaseResponse<object>.SucessResponse(data))
+        };
+    }
     /// <summary>
     /// Transfere todas as notificações da fila, para o objeto de resposta padrão (Command Response)
     /// </summary>

@@ -33,7 +33,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         var administrador = await GetAdministrador(message.AdministradorId);
         var cliente = await GetCliente(message.ClienteId);
         
-        if (!ValidationResult.IsValid) return ReturnResponse(HttpStatusCode.NotFound);
+        if (!ValidationResult.IsValid) return ReturnResponse();
         
         bool possuiFestasAgendadas = await TemFestasAgendadasParaTemaNoPeriodo(
             message.TemaId,
@@ -67,9 +67,15 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         return festa;
     }
 
-    private CriarFestaViewModel MapViewModel(Festa festa)
+    private FestaViewModel MapViewModel(Festa festa)
     {
-        return new CriarFestaViewModel(
+        List<ProdutoViewModel> produtos = new();
+        foreach (var produto in festa.Tema.Produtos)
+        {
+            produtos.Add(new(produto.Nome, produto.ValorLocacao));
+        }
+        
+        return new FestaViewModel(
             festa.Tema.Nome,
             festa.Cliente.Nome,
             festa.QuantidadeParticipantes,
@@ -78,7 +84,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
             festa.DataDevolucao,
             festa.Contrato.Valor,
             festa.Contrato.Multa,
-            festa.Tema.Produtos);
+            produtos);
     }
     private async Task<Tema?> GetTema(Guid id)
     {
