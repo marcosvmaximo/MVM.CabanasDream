@@ -19,8 +19,6 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<DataContext>(opt => opt
     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-
-
 var app = builder.Build();
 
 // SwaggerConfig
@@ -29,16 +27,6 @@ app.UseSwaggerConfig(app.Environment);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseDeveloperExceptionPage();
-// }
-// else
-// {
-//     app.UseExceptionHandler("/Home/Error");
-//     app.UseHsts();
-// }
 
 app.UseMiddleware<ExceptionMiddleware>();
 
