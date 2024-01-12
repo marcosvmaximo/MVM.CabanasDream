@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "7ifKPYzvKmMdyaWF0zxe0wG8SmxzwghCvi+bhdRDm1qK8eJWRYQrsxi3zFNZg5jvrPZ/JrNkWRt7m2KC1VF7aw==",
+  "dgSpecHash": "HnRhCT9GrjAgAE7QX2Yt+Wtn4wzv6EhTtD2j3D3Hx7+e4xF+efDYgush1S5iBzHsso+NFRN8761mvQjUC0GaRw==",
   "success": true,
   "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/MVM.CabanasDream.Festas.API.csproj",
   "expectedPackageFiles": [
+    "/Users/marcosmaximo/.nuget/packages/asp.versioning.abstractions/7.0.0/asp.versioning.abstractions.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/asp.versioning.http/7.1.0/asp.versioning.http.7.1.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/asp.versioning.mvc/7.1.1/asp.versioning.mvc.7.1.1.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/asp.versioning.mvc.apiexplorer/7.1.0/asp.versioning.mvc.apiexplorer.7.1.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/fluentvalidation/11.8.1/fluentvalidation.11.8.1.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/mediatr/12.1.1/mediatr.12.1.1.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",

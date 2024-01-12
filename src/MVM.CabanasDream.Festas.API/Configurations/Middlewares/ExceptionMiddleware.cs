@@ -8,10 +8,12 @@ namespace MVM.CabanasDream.Festas.API.Configurations.Middlewares;
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
+    private readonly ILogger<ExceptionMiddleware> _logger;
 
-    public ExceptionMiddleware(RequestDelegate next)
+    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
         _next = next;
+        _logger = logger;
     }
     
     public async Task Invoke(HttpContext context)
@@ -22,32 +24,38 @@ public class ExceptionMiddleware
         }
         catch (Exception ex)
         {
-            // Lógica de tratamento de exceções
+            _logger.LogError(ex.Message); 
             await HandleExceptionAsync(context, ex);
         }
     }
 
     private async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
-        BaseResponse<string> response;
+        object response;
         context.Response.ContentType = "application/json";
         
         if (exception is DomainException)
         {
             context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             
-            response = BaseResponse<string>.FailureResponse(exception.Message);
+            response = new
+            {
+                httpCode = 400,
+                success = false,
+                message = "Ocorreu uma falha ao enviar a requisição.",
+                data = exception.Message
+            };
         }
         else
         {
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            response = new BaseResponse<string>()
+            response = new
             {
-                HttpCode = 500,
-                Success = false,
-                Message = "Ocorreu um erro interno no servidor.",
-                Data = exception.Message
+                httpCode = 500,
+                success = false,
+                message = "Ocorreu um erro interno no servidor.",
+                data = exception.Message
             };
         }
         

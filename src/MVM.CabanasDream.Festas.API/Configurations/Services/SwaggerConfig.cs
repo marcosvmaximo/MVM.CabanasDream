@@ -31,10 +31,10 @@ public static class SwaggerConfig
                 }
             });
             // Configura versão 2
-            c.SwaggerDoc("v2", new OpenApiInfo
+            c.SwaggerDoc("v1.1", new OpenApiInfo
             {
-                Title = "API MVM.CabanasDream v2.0",
-                Version = "v2",
+                Title = "API MVM.CabanasDream v1.1",
+                Version = "v1.1",
                 Description = "Segunda versão API Cabanas Dream.",
                 Contact = new OpenApiContact
                 {
@@ -49,9 +49,9 @@ public static class SwaggerConfig
             });
 
             // Inclui o XML de documentação
-            // var xmlFile = "MVM.CabanasDream.Festas.API.xml";
-            // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            // c.IncludeXmlComments(xmlPath);
+            var xmlFile = "MVM.CabanasDream.Festas.API.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
             
             //
             // c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -87,7 +87,7 @@ public static class SwaggerConfig
         builder.UseSwaggerUI(c =>
         {
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Version 1.0");
-            c.SwaggerEndpoint("/swagger/v2/swagger.json", "API Version 2.0");
+            c.SwaggerEndpoint("/swagger/v1.1/swagger.json", "API Version 1.1");
         });
         return builder;
     }

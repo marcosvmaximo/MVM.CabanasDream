@@ -1,7 +1,9 @@
 using System.Net;
+using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MVM.CabanasDream.Core.Bus;
+using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Messages;
 using MVM.CabanasDream.Festas.API.Controllers.Common;
 using MVM.CabanasDream.Festas.Application.Commands;
@@ -11,7 +13,8 @@ using MVM.CabanasDream.Festas.Domain.Interfaces;
 
 namespace MVM.CabanasDream.Festas.API.Controllers;
 
-[Route("api/v1/festa")]
+[Route("api/{version:apiVersion}/festa")]
+[ApiVersion("1.0")]
 public class FestaController : ControllerCommon
 {
     private readonly IFestaRepository _repository;
@@ -29,6 +32,7 @@ public class FestaController : ControllerCommon
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<FestaViewModel>>> ObterFestasPorCliente([FromRoute] Guid idCliente)
     {
+        throw new DomainException();
         var response = await _repository.ObterFestaPorCliente(idCliente);
         
         // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -87,6 +91,7 @@ public class FestaController : ControllerCommon
     }
     
     [HttpPatch("confirmar")]
+    [ApiVersion("1.1")]
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
@@ -107,6 +112,7 @@ public class FestaController : ControllerCommon
     }
     
     [HttpPatch("retirar")]
+    [ApiVersion("1.1")]
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
@@ -127,6 +133,7 @@ public class FestaController : ControllerCommon
     }
     
     [HttpPatch("finalizar")]
+    [ApiVersion("1.1")]
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
@@ -147,6 +154,7 @@ public class FestaController : ControllerCommon
     }
     
     [HttpPatch("cancelar")]
+    [ApiVersion("1.1")]
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
