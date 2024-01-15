@@ -99,8 +99,8 @@ public class Festa : Entity, IAggregateRoot
     public sealed override void Validar()
     {
         AssertionConcern.AssertArgumentRange(QuantidadeParticipantes, 1, 20, "A quantidade de participantes deve ser entre 1 e 20 participantes.");
-        AssertionConcern.AssertArgumentGreaterThan(DataRealizacao, DateTime.Now, "A data de realização da festa deve ser maior que a data atual.");
-        AssertionConcern.AssertArgumentGreaterThanOrEqualTo(DataRetirada, DateTime.Now, "A data de retirada da festa deve ser maior ou igual à data atual.");
+        AssertionConcern.AssertArgumentLetterThan(DataRealizacao, DateTime.Now, "A data de realização da festa deve ser maior que a data atual.");
+        AssertionConcern.AssertArgumentLetterThan(DataRetirada, DateTime.Now, "A data de retirada da festa deve ser maior ou igual à data atual.");
         AssertionConcern.AssertArgumentGreaterThan(DataDevolucao, DataRetirada, "A data de devolução da festa deve ser maior que a data de retirada.");
         
         AssertionConcern.AssertArgumentNotNull(Tema, "A festa deve possuir um Tema associado.");
