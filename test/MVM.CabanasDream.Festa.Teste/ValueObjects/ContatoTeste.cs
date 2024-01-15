@@ -21,7 +21,7 @@ public class ContatoTeste
         Assert.Equal(telefone, contato.Telefone);
         Assert.Equal(email, contato.Email);
     }
-[Fact]
+        [Fact]
         public void TestarCriacaoDoValueObject_ComValoresValidos_DevePassar()
         {
             // Arrange

@@ -52,6 +52,11 @@ public class Tema : Entity
         }
     }
 
+    public void AlterarPreco(decimal novoPreco)
+    {
+        PrecoBase = novoPreco;
+    }
+    
     public void Indisponibilizar()
     {
         Disponibilidade = false;
