@@ -14,8 +14,9 @@ public class Produto : Entity
         NumeroSerie = numeroSerie;
         ValorCompra = valorCompra;
         ValorLocacao = valorLocacao;
+        
         Tema = tema;
-        TemaId = tema.Id;
+        if(Tema != null) TemaId = tema.Id;
         
         Validar();
     }
@@ -39,12 +40,12 @@ public class Produto : Entity
         if (!string.IsNullOrWhiteSpace(NumeroSerie))
         {
             AssertionConcern.AssertArgumentNotEmpty(NumeroSerie, "O número de serie deve ser informado.");
-            AssertionConcern.AssertArgumentLength(NumeroSerie, 15, 15, "O número de série deve ter 15 dígitos.");
+            AssertionConcern.AssertArgumentLength(NumeroSerie, 5, 5, "O número de série deve ter exatamente 5 dígitos.");
         }
-       
-        AssertionConcern.AssertArgumentRange(ValorCompra, 0, 10000, "O valor da compra do produto deve estar entre R$1 e R$10.000..");
+
+        AssertionConcern.AssertArgumentRange(ValorCompra, 0, 10000, "O valor da compra do produto deve estar entre R$1 e R$10.000.");
         AssertionConcern.AssertArgumentRange(ValorLocacao, 0, 10000, "O valor da locação do produto deve estar entre R$1 e R$10.000.");
         
-        AssertionConcern.AssertArgumentNotNull(Tema, "O produto deve ter um tema selecionado");
+        AssertionConcern.AssertArgumentNotNull(Tema, "O produto deve possuir um tema válido");
     }
 }

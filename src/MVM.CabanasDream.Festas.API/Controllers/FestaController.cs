@@ -32,7 +32,6 @@ public class FestaController : ControllerCommon
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<FestaViewModel>>> ObterFestasPorCliente([FromRoute] Guid idCliente)
     {
-        throw new DomainException();
         var response = await _repository.ObterFestaPorCliente(idCliente);
         
         // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract

@@ -34,7 +34,7 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
 
         builder.Property(p => p.NumeroSerie)
             .HasColumnName("numero_de_serie")
-            .HasColumnType("varchar(32)");
+            .HasColumnType("varchar(5)");
 
         builder.Property(p => p.ValorCompra)
             .HasColumnName("valor_compra")
