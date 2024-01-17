@@ -19,7 +19,7 @@ public class AdministradorMap : IEntityTypeConfiguration<Administrador>
         
         builder.Property(a => a.Id)
             .HasColumnName("id")
-            .HasColumnType("varchar(32)")
+            .HasColumnType("varchar(36)")
             .IsRequired();
 
         builder.Property(a => a.Nome)

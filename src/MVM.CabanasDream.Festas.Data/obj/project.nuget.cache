@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "05wNCZdq40/U18O5PuAwU5Ue774hDY37lxXQFaf2xfoTaRqCnJo63VodZOuU/BRGJjvfa5xbANHmF41sPBe8Rw==",
+  "dgSpecHash": "1nmOVBECTrUwRMrB5ZMFdP6zM+M4sv4kyLJZVltEu0ONMlFMmRhxkCbp6h4RRWdKsRhgyPM1Z1jeXmH1J83sdw==",
   "success": true,
   "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Data/MVM.CabanasDream.Festas.Data.csproj",
   "expectedPackageFiles": [
@@ -33,7 +33,9 @@
     "/Users/marcosmaximo/.nuget/packages/system.diagnostics.tools/4.3.0/system.diagnostics.tools.4.3.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/marcosmaximo/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+    "/Users/marcosmaximo/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512"
   ],
   "logs": []
 }

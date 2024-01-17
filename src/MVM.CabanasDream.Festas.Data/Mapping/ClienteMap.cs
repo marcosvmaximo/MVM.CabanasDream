@@ -14,7 +14,7 @@ public class ClienteMap : IEntityTypeConfiguration<Cliente>
             
             builder.Property(p => p.Id)
                 .HasColumnName("id")
-                .HasColumnType("varchar(32)")
+                .HasColumnType("varchar(36)")
                 .IsRequired();
             
             builder.Property(a => a.TimeStamp)

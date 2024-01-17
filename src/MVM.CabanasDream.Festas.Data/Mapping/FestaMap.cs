@@ -14,7 +14,7 @@ public class FestaMap : IEntityTypeConfiguration<Festa>
             
             builder.Property(f => f.Id)
                 .HasColumnName("id")
-                .HasColumnType("varchar(32)")
+                .HasColumnType("varchar(36)")
                 .IsRequired();
             
             builder.Property(f => f.TimeStamp)

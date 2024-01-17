@@ -14,7 +14,7 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
             
         builder.Property(p => p.Id)
             .HasColumnName("id")
-            .HasColumnType("varchar(32)")
+            .HasColumnType("varchar(36)")
             .IsRequired();
         
         builder.Property(p => p.TimeStamp)

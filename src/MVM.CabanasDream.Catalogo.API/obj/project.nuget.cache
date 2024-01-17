@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "S+3998aqtNnhpIt1jU2N0HboN/tnGykvXTXUUVEc0r7HuNX9WFCyQmf7LqcxAhyKb1+LfKgqx/JOETD5JJ1u6g==",
+  "dgSpecHash": "LxBmUrNqhitYXoa+O7gZRSi00rBCim++OmfarHHwooaDdoDbKFQJtrUo2K4G5Q6KmuNOAZb9UqEkca3q4/eqUg==",
   "success": true,
   "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Catalogo.API/MVM.CabanasDream.Catalogo.API.csproj",
   "expectedPackageFiles": [
@@ -30,7 +30,10 @@
     "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
-    "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+    "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.15/microsoft.netcore.app.host.osx-arm64.7.0.15.nupkg.sha512"
   ],
   "logs": []
 }

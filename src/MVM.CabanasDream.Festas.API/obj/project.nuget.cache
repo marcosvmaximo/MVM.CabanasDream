@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HnRhCT9GrjAgAE7QX2Yt+Wtn4wzv6EhTtD2j3D3Hx7+e4xF+efDYgush1S5iBzHsso+NFRN8761mvQjUC0GaRw==",
+  "dgSpecHash": "GO1zoQ8IIzXTOr2xKUgw1mrE2z1BxmHmXVf+j+EsHiJCkjUQfDQ1NzA1i/YAE/y9CPQhyGY0KQ/DnyBUVaJv1A==",
   "success": true,
   "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/MVM.CabanasDream.Festas.API.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,10 @@
     "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/system.diagnostics.tools/4.3.0/system.diagnostics.tools.4.3.0.nupkg.sha512",
-    "/Users/marcosmaximo/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512"
+    "/Users/marcosmaximo/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.15/microsoft.netcore.app.host.osx-arm64.7.0.15.nupkg.sha512"
   ],
   "logs": []
 }

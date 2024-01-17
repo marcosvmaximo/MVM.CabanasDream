@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MfYXDRDsH+ACd6nYxDfZXShfHyeCn4IVAOzB1qiovI1iAbdoLona/1mOUojIhq92kXIBz1UOjUOlfwIWNIfGCQ==",
+  "dgSpecHash": "UFH6ph6AHi331KChsHYz9CbfpX3nVVDTvhWkyp26s3d5wZP1MADQe/hZrK6SEu1mj0H+qmv6JdZWBvfBGwE8Gg==",
   "success": true,
   "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/test/MVM.CabanasDream.Festa.Teste/MVM.CabanasDream.Festa.Teste.csproj",
   "expectedPackageFiles": [
@@ -96,7 +96,9 @@
     "/Users/marcosmaximo/.nuget/packages/xunit.core/2.4.2/xunit.core.2.4.2.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/xunit.extensibility.core/2.4.2/xunit.extensibility.core.2.4.2.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/xunit.extensibility.execution/2.4.2/xunit.extensibility.execution.2.4.2.nupkg.sha512",
-    "/Users/marcosmaximo/.nuget/packages/xunit.runner.visualstudio/2.4.5/xunit.runner.visualstudio.2.4.5.nupkg.sha512"
+    "/Users/marcosmaximo/.nuget/packages/xunit.runner.visualstudio/2.4.5/xunit.runner.visualstudio.2.4.5.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512"
   ],
   "logs": []
 }
