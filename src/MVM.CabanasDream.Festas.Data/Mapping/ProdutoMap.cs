@@ -27,7 +27,7 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
             .HasColumnType("varchar(100)")
             .IsRequired();
         
-        builder.Property(p => p.Tipo)
+        builder.Property(p => p.Categoria)
             .HasColumnName("tipo_produto")
             .HasColumnType("int")
             .IsRequired();

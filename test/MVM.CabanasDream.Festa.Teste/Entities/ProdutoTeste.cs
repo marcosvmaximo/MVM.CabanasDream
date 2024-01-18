@@ -21,7 +21,7 @@ public class ProdutoTeste
         // Act
         var exception = Record.Exception(() =>
         {
-            var produto = new Produto(nome, ETipoProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao, tema);
+            var produto = new Produto(nome, ECategoriaProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao, tema);
         });
 
         // Assert
@@ -42,7 +42,7 @@ public class ProdutoTeste
         // Act
         var act = () =>
         {
-            var produto = new Produto(nome, ETipoProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
+            var produto = new Produto(nome, ECategoriaProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
                 _temaValido);
         };
         
@@ -63,7 +63,7 @@ public class ProdutoTeste
         // Act
         var exception = Record.Exception(() =>
         {
-            var produto = new Produto(nome, ETipoProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
+            var produto = new Produto(nome, ECategoriaProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
                 _temaValido);
         });
         
@@ -84,7 +84,7 @@ public class ProdutoTeste
         // Act
         var act = () =>
         {
-            var produto = new Produto(nome, ETipoProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
+            var produto = new Produto(nome, ECategoriaProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
                 _temaValido);
         };
         
@@ -105,7 +105,7 @@ public class ProdutoTeste
         // Act
         var act = () =>
         {
-            var produto = new Produto(nome, ETipoProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
+            var produto = new Produto(nome, ECategoriaProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
                 _temaValido);
         };
         
@@ -125,7 +125,7 @@ public class ProdutoTeste
         // Act
         var act = () =>
         {
-            var produto = new Produto(nome, ETipoProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
+            var produto = new Produto(nome, ECategoriaProduto.Almofadas, numeroDeSerie, valorCompra, valorLocacao,
                 null);
         };
         

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVM.CabanasDream.Festas.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c30a72175ae20786e9260eca4cc480af02b5578b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb1746911b9e5cc11afbad2ce76fb80f445779f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVM.CabanasDream.Festas.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVM.CabanasDream.Festas.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

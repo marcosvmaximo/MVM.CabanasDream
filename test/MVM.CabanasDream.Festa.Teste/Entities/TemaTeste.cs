@@ -182,7 +182,7 @@ public class TemaTeste
         var tema = new Tema(nome, precoBase, descricao);
         tema.Indisponibilizar();
 
-        Produto produtoExtra = new Produto("Almofada da barbie", ETipoProduto.Almofadas, "10239", 29.99m, 20m, tema);
+        Produto produtoExtra = new Produto("Almofada da barbie", ECategoriaProduto.Almofadas, "10239", 29.99m, 20m, tema);
         
         // Act
         var act = () =>
@@ -202,7 +202,7 @@ public class TemaTeste
         var descricao = "";
 
         var tema = new Tema(nome, precoBase, descricao);
-        var produtoExtra = new Produto("Almofada da barbie", ETipoProduto.Almofadas, "10239", 29.99m, 20m, tema);
+        var produtoExtra = new Produto("Almofada da barbie", ECategoriaProduto.Almofadas, "10239", 29.99m, 20m, tema);
         
         // Act
         var act = () =>

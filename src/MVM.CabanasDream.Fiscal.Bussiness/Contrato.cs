@@ -1,11 +1,13 @@
+
+
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Validation;
-using MVM.CabanasDream.Festas.Domain.Enum;
+using MVM.CabanasDream.Fiscal.Bussiness.Enum;
 
-namespace MVM.CabanasDream.Festas.Domain.ValueObjects;
+namespace MVM.CabanasDream.Fiscal.Bussiness;
 
-public class Contrato : ValueObject
+public class Contrato : Entity, IAggregateRoot
 {
     public Contrato(decimal valor, decimal multa)
     {
@@ -34,13 +36,10 @@ public class Contrato : ValueObject
         
         Assinado = true;
     }
-    
-    protected override IEnumerable<object> GetEqualityComponents()
+
+    public void AplicarMulta()
     {
-        yield return Valor;
-        yield return Multa;
-        yield return Assinado;
-        yield return Status;
+        
     }
 
     public void ConfirmarContrato()

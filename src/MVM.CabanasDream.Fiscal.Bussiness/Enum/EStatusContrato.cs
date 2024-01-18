@@ -1,4 +1,4 @@
-namespace MVM.CabanasDream.Festas.Domain.Enum;
+namespace MVM.CabanasDream.Fiscal.Bussiness.Enum;
 
 public enum EStatusContrato
 {

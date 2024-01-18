@@ -66,6 +66,14 @@ namespace MVM.CabanasDream.Core.Validation;
                 throw new DomainException(message);
             }
         }
+        
+        public static void AssertArgumentNotEquals(Guid object1, Guid object2, string message)
+        {
+            if (object1.Equals(object2))
+            {
+                throw new DomainException(message);
+            }
+        }
 
         public static void AssertArgumentNotNull(object object1, string message)
         {

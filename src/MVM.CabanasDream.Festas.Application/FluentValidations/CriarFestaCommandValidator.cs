@@ -1,5 +1,5 @@
 using FluentValidation;
-using MVM.CabanasDream.Festas.Application.Commands;
+using MVM.CabanasDream.Festas.Application.Commands.Festas;
 using System;
 
 namespace MVM.CabanasDream.Festas.Application.Validators

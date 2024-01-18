@@ -7,6 +7,10 @@ using MVM.CabanasDream.Core.Messages;
 
 namespace MVM.CabanasDream.Core.Application;
 
+/// <summary>
+/// Handler (Manipulador) das mensagens command
+/// </summary>
+/// <typeparam name="TCommand">Command Type</typeparam>
 public abstract class Handler<TCommand> : IRequestHandler<TCommand, CommandResponse>
     where TCommand : Command
 {

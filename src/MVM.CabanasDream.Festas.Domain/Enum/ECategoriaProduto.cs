@@ -1,6 +1,6 @@
 namespace MVM.CabanasDream.Festas.Domain.Enum;
 
-public enum ETipoProduto
+public enum ECategoriaProduto
 {
     Baloes = 1,
     Luzes = 2,

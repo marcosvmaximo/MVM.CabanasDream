@@ -6,8 +6,6 @@ namespace MVM.CabanasDream.Festas.Domain.Interfaces;
 
 public interface IFestaRepository : IRepository<Festa>
 {
-    Task<Cliente?> ObterClientePorId(Guid clienteId);
-    Task<Administrador?> ObterAdministradorPorId(Guid administradorId);
     Task<Tema?> ObterTemaPorId(Guid temaId);
     
     Task<IEnumerable<Festa?>> ObterTodasFestas();
@@ -16,4 +14,5 @@ public interface IFestaRepository : IRepository<Festa>
     Task SalvarFesta(Festa festa);
     Task<Festa?> ObterFestaPorId(Guid festaId);
 
+    Task<object> ObterTodosTemas(FiltroTema? filtro);
 }

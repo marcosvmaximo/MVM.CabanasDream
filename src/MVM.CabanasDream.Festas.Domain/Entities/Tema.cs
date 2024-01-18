@@ -1,6 +1,7 @@
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Validation;
+using MVM.CabanasDream.Festas.Domain.ValueObjects;
 
 namespace MVM.CabanasDream.Festas.Domain.Entities;
 
@@ -9,11 +10,12 @@ public class Tema : Entity
     private List<Produto> _produtos = new();
     private List<Festa> _festas = new();
 
-    public Tema(string nome, decimal precoBase, string? descricao)
+    public Tema(string nome, decimal precoBase, Imagem imagem, string? descricao)
     {
         Nome = nome;
         Descricao = descricao;
         PrecoBase = precoBase;
+        Imagem = imagem;
         Disponibilidade = true;
         
         Validar();
@@ -23,6 +25,7 @@ public class Tema : Entity
 
     public string Nome { get; private set; }
     public decimal PrecoBase { get; private set; }
+    public Imagem Imagem { get; private set; }
     public bool Disponibilidade { get; private set; }
     public string? Descricao { get; private set; }
     public IReadOnlyCollection<Produto> Produtos => _produtos;
@@ -36,7 +39,7 @@ public class Tema : Entity
         if(produto == null)
             throw new DomainException("Produto informado inválido.");
 
-        PrecoBase += produto.ValorLocacao;
+        PrecoBase += produto.Valor.ValorLocacao;
         
         _produtos.Add(produto);
     }
@@ -50,6 +53,14 @@ public class Tema : Entity
         {
             AdicionarProdutoExtra(produto);
         }
+    }
+
+    public void AlterarImagem(Imagem imagem)
+    {
+        if (imagem == null)
+            throw new DomainException("Imagem informado é inválida");
+        
+        Imagem = imagem;
     }
 
     public void AlterarPreco(decimal novoPreco)
@@ -69,17 +80,15 @@ public class Tema : Entity
     
     public sealed override void Validar()
     { 
-        // Nome
         AssertionConcern.AssertArgumentNotEmpty(Nome, "O nome do tema deve ser informado.");
         AssertionConcern.AssertArgumentLength(Nome, 0, 100, "O nome do tema não deve conter mais que 100 caracteres.");
+        AssertionConcern.AssertArgumentNotNull(Imagem, "A imagem do Tema deve ser informada.");
 
-        // Descrição
         if (Descricao != null)
         {
             AssertionConcern.AssertArgumentLength(Descricao, 0, 500, "A descrição do tema não deve conter mais que 500 caracteres.");
         }
 
-        // Preço base
         AssertionConcern.AssertArgumentRange(PrecoBase, 1, 10000, "O preço base do tema deve estar entre R$1 e R$10.000.");
     }
 }

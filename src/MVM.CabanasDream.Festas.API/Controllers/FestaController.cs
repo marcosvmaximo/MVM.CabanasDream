@@ -6,8 +6,8 @@ using MVM.CabanasDream.Core.Bus;
 using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Messages;
 using MVM.CabanasDream.Festas.API.Controllers.Common;
-using MVM.CabanasDream.Festas.Application.Commands;
-using MVM.CabanasDream.Festas.Application.ViewModels;
+using MVM.CabanasDream.Festas.Application.Commands.Festas;
+using MVM.CabanasDream.Festas.Application.ViewModels.Festas;
 using MVM.CabanasDream.Festas.Domain;
 using MVM.CabanasDream.Festas.Domain.Interfaces;
 
@@ -42,7 +42,7 @@ public class FestaController : ControllerCommon
     }
     
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<FestaViewModel>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(BaseResponse<IEnumerable<FestaViewModel>>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<FestaViewModel?>>> ObterFestas()
     {

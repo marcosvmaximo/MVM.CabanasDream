@@ -1,19 +1,15 @@
-using System.Net;
-using System.Xml.Linq;
-using FluentValidation.Results;
 using MVM.CabanasDream.Core.Application;
 using MVM.CabanasDream.Core.Bus;
-using MVM.CabanasDream.Core.Messages;
-using MVM.CabanasDream.Festas.Application.Commands;
+using MVM.CabanasDream.Festas.Application.Commands.Festas;
 using MVM.CabanasDream.Festas.Application.Validators;
-using MVM.CabanasDream.Festas.Application.ViewModels;
+using MVM.CabanasDream.Festas.Application.ViewModels.Festas;
 using MVM.CabanasDream.Festas.Domain;
 using MVM.CabanasDream.Festas.Domain.Entities;
 using MVM.CabanasDream.Festas.Domain.Enum;
 using MVM.CabanasDream.Festas.Domain.Interfaces;
 using MVM.CabanasDream.Festas.Domain.ValueObjects;
 
-namespace MVM.CabanasDream.Festas.Application.Handlers;
+namespace MVM.CabanasDream.Festas.Application.Handlers.Festas;
 
 public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
 {
