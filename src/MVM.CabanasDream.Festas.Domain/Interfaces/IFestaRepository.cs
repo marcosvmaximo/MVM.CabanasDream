@@ -14,5 +14,5 @@ public interface IFestaRepository : IRepository<Festa>
     Task SalvarFesta(Festa festa);
     Task<Festa?> ObterFestaPorId(Guid festaId);
 
-    Task<object> ObterTodosTemas(FiltroTema? filtro);
+    // Task<object> ObterTodosTemas(FiltroTema? filtro);
 }

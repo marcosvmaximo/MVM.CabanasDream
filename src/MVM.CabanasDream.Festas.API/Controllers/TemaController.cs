@@ -26,26 +26,26 @@ public class TemaController : ControllerCommon
         _repository = repository;
     }
     
-    [HttpGet("produtos")]
-    [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTodosTemasComProdutos()
-    {
-        var response = await _repository.ObterTodosTemas();
-        
-        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-        if (response == null) 
-            return await CustomResponse(HttpStatusCode.NotFound);
-        
-        return await CustomResponse(HttpStatusCode.OK, response);
-    }
+    // [HttpGet("produtos")]
+    // [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
+    // [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
+    // public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTodosTemasComProdutos()
+    // {
+    //     var response = await _repository.ObterTodosTemas();
+    //     
+    //     // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+    //     if (response == null) 
+    //         return await CustomResponse(HttpStatusCode.NotFound);
+    //     
+    //     return await CustomResponse(HttpStatusCode.OK, response);
+    // }
     
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(BaseResponse<TemaViewModel>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<TemaViewModel>> ObterTemaComProduto(Guid idTema)
+    public async Task<ActionResult<TemaViewModel>> ObterTemaPorId(Guid id)
     {
-        var response = await _repository.ObterTemaPorId(idTema);
+        var response = await _repository.ObterTemaPorId(id);
         
         // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (response == null) 
@@ -54,19 +54,19 @@ public class TemaController : ControllerCommon
         return await CustomResponse(HttpStatusCode.OK, response);
     }
     
-    [HttpGet]
-    [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTemaPorFiltro([FromQuery] FiltroTema? filtro)
-    {
-        var response = await _repository.ObterTodosTemas(filtro);
-        
-        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-        if (response == null) 
-            return await CustomResponse(HttpStatusCode.NotFound);
-        
-        return await CustomResponse(HttpStatusCode.OK, response);
-    }
+    // [HttpGet]
+    // [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
+    // [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
+    // public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTemaPorFiltro([FromQuery] FiltroTema? filtro)
+    // {
+    //     var response = await _repository.ObterTodosTemas(filtro);
+    //     
+    //     // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+    //     if (response == null) 
+    //         return await CustomResponse(HttpStatusCode.NotFound);
+    //     
+    //     return await CustomResponse(HttpStatusCode.OK, response);
+    // }
 
     [HttpPost]
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
@@ -74,6 +74,8 @@ public class TemaController : ControllerCommon
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CadastrarTema(CriarTemaCommand request)
     {
+        UploadArquivo(request.ImagemUpload, request.Imagem);
+
         if (!ModelState.IsValid)
             return await CustomResponse(ModelState);
         
@@ -87,16 +89,44 @@ public class TemaController : ControllerCommon
     }
 
     [HttpPost("produto/{idTema:guid}")]
+    [ProducesDefaultResponseType(typeof(BaseResponse<>))]
+    [ProducesResponseType(typeof(BaseResponse<TemaViewModel>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CadastrarProduto([FromBody]CriarProdutoCommand request, [FromRoute] Guid idTema)
     {
         if (!ModelState.IsValid)
             return await CustomResponse(ModelState);
-        
+
+        request.TemaId = idTema;
         var response = await _messager.SendCommand(request);
         
         if (response.Success)
             return await CustomResponse(response, HttpStatusCode.Created);
 
         return await CustomResponse(response);
+    }
+    
+    protected bool UploadArquivo(string arquivo, string imgNome)
+    {
+        var imageDataByteArray = Convert.FromBase64String(arquivo);
+        imgNome = $"{Guid.NewGuid()}_{imgNome}";
+        
+        if (String.IsNullOrEmpty(arquivo) || arquivo.Length <= 0)
+        {
+            ModelState.AddModelError(string.Empty, "Forneça a imagem desse Tema");
+            return false;
+        }
+
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens", $"{imgNome}.jpg");
+
+        if (System.IO.File.Exists(filePath))
+        {
+            ModelState.AddModelError(string.Empty, "Já existe uma imagem com esse nome");
+            return false;
+        }
+        
+        System.IO.File.WriteAllBytes(filePath, imageDataByteArray);
+
+        return true;
     }
 }
