@@ -10,3 +10,4 @@
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Core/obj/Debug/net7.0/refint/MVM.CabanasDream.Core.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Core/obj/Debug/net7.0/MVM.CabanasDream.Core.pdb
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Core/obj/Debug/net7.0/ref/MVM.CabanasDream.Core.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Core/obj/Debug/net7.0/MVM.CabanasDream.Core.sourcelink.json

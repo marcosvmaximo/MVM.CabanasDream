@@ -15,3 +15,4 @@
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Application/obj/Debug/net7.0/refint/MVM.CabanasDream.Festas.Application.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Application/obj/Debug/net7.0/MVM.CabanasDream.Festas.Application.pdb
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Application/obj/Debug/net7.0/ref/MVM.CabanasDream.Festas.Application.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Application/obj/Debug/net7.0/MVM.CabanasDream.Festas.Application.sourcelink.json

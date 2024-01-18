@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "q1jxVLyp05S6ReceqRCd9bJwi+eHOugTzK+iHmNP0xDnmAzgs7icY1tH6ZVUlVmxDZXnpMTRITJ9h6taKHYYVQ==",
+  "success": true,
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Fiscal.Bussiness/MVM.CabanasDream.Fiscal.Bussiness.csproj",
+  "expectedPackageFiles": [
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "mKDkyd1kpuwAdJUh5OK4/XxSO17Au84oMr6NcRT3J6918vqDr4h3OB8F0heNnmpi2gr+f/reLXDwTSw+MD+5gw==",
+  "success": true,
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Pagamento.API/MVM.CabanasDream.Pagamento.API.csproj",
+  "expectedPackageFiles": [
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.ref/7.0.15/microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.15/microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.15/microsoft.netcore.app.host.osx-arm64.7.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

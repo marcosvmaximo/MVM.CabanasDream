@@ -52,3 +52,4 @@
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/bin/Debug/net7.0/Asp.Versioning.Http.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/bin/Debug/net7.0/Asp.Versioning.Mvc.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/bin/Debug/net7.0/Asp.Versioning.Mvc.ApiExplorer.dll
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.API/obj/Debug/net7.0/MVM.CabanasDream.Festas.API.sourcelink.json

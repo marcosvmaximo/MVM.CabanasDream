@@ -17,3 +17,4 @@
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Data/obj/Debug/net7.0/ref/MVM.CabanasDream.Festas.Data.dll
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Data/bin/Debug/net7.0/MVM.CabanasDream.Festas.Data.runtimeconfig.json
 /Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Data/obj/Debug/net7.0/MVM.CabanasDream.Festas.Data.genruntimeconfig.cache
+/Users/marcosmaximo/RiderProjects/MVM.CabanasDream/src/MVM.CabanasDream.Festas.Data/obj/Debug/net7.0/MVM.CabanasDream.Festas.Data.sourcelink.json
