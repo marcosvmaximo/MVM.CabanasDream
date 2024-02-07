@@ -14,13 +14,6 @@ public class CriarProdutoCommandValidator : AbstractValidator<CriarProdutoComman
             .MaximumLength(100)
             .WithMessage("O Nome do Produto não deve conter mais que 100 caracteres.");
 
-        RuleFor(command => command.NumeroDeSerie)
-            .NotNull()
-            .NotEmpty()
-            .WithMessage("O Número de Série não deve ser vázio.")
-            .Length(5)
-            .WithMessage("O Número de Série deve conter 5 caracteres válidos.");
-
         RuleFor(command => command.ValorCompra)
             .InclusiveBetween(0, 10000)
             .WithMessage("O Valor da Compra do Produto deve custar R$0.00 à R$10.000. Valores acima ou abaixo são inválidos");

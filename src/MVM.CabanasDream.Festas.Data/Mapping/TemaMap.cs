@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MVM.CabanasDream.Festas.Domain.Entities;
+using MVM.CabanasDream.Festas.Domain.TemaContext;
 
 namespace MVM.CabanasDream.Festas.Data.Mapping;
 

@@ -1,11 +1,14 @@
+using System.Data;
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Validation;
-using MVM.CabanasDream.Festas.Domain.ValueObjects;
+using MVM.CabanasDream.Festas.Domain.FestaContext;
+using MVM.CabanasDream.Festas.Domain.TemaContext.Entities;
+using MVM.CabanasDream.Festas.Domain.TemaContext.ValueObjects;
 
-namespace MVM.CabanasDream.Festas.Domain.Entities;
+namespace MVM.CabanasDream.Festas.Domain.TemaContext;
 
-public class Tema : Entity
+public class Tema : Entity, IAggregateRoot
 {
     private List<Produto> _produtos = new();
     private List<Festa> _festas = new();
@@ -31,7 +34,7 @@ public class Tema : Entity
     public IReadOnlyCollection<Produto> Produtos => _produtos;
     public IReadOnlyCollection<Festa> Festas => _festas;
 
-    public void AdicionarProdutoExtra(Produto produto)
+    public void AdicionarProduto(Produto produto)
     {
         if (!Disponibilidade)
             throw new DomainException("Tema indisponível.");
@@ -39,11 +42,18 @@ public class Tema : Entity
         if(produto == null)
             throw new DomainException("Produto informado inválido.");
 
-        PrecoBase += produto.Valor.ValorLocacao;
-        
+        if (_produtos.Count > 25)
+            throw new DataException("Número maximo de produtos possíveis para um Tema é 25, você excedeu esse limite.");
+
+        produto.SeAlocarAoTema(this);
         _produtos.Add(produto);
     }
-    
+
+    public void AdicionarProdutoExtra(Produto produto)
+    {
+        AdicionarProduto(produto);
+        PrecoBase += produto.Valor.ValorLocacao;
+    }
     public void AdicionarProdutoExtra(IEnumerable<Produto> produtos)
     {
         if(produtos == null)

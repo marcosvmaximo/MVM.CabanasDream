@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MVM.CabanasDream.Festas.Domain.Entities;
+using MVM.CabanasDream.Festas.Domain.TemaContext.Entities;
 
 namespace MVM.CabanasDream.Festas.Data.Mapping;
 
@@ -28,22 +28,31 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
             .IsRequired();
         
         builder.Property(p => p.Categoria)
-            .HasColumnName("tipo_produto")
+            .HasColumnName("categoria")
             .HasColumnType("int")
             .IsRequired();
 
-        builder.Property(p => p.NumeroSerie)
+        builder.Property(p => p.NumeroDeSerie)
             .HasColumnName("numero_de_serie")
-            .HasColumnType("varchar(5)");
-
-        builder.Property(p => p.ValorCompra)
-            .HasColumnName("valor_compra")
-            .HasColumnType("decimal(10, 2)")
+            .HasColumnType("varchar(5)")
             .IsRequired();
 
-        builder.Property(p => p.ValorLocacao)
-            .HasColumnName("valor_locacao")
-            .HasColumnType("decimal(10, 2)")
+        builder.OwnsOne(x => x.Valor, v =>
+        {
+            v.Property(p => p.ValorCompra)
+                .HasColumnName("valor_compra")
+                .HasColumnType("decimal(10, 2)")
+                .IsRequired();
+
+            v.Property(p => p.ValorLocacao)
+                .HasColumnName("valor_locacao")
+                .HasColumnType("decimal(10, 2)")
+                .IsRequired();
+        });
+        
+        builder.Property(p => p.Alocado)
+            .HasColumnName("alocado")
+            .HasColumnType("tinyint")
             .IsRequired();
 
         // Mapeamento da relação muitos-para-um com Tema

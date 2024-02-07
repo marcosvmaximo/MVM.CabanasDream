@@ -10,5 +10,5 @@ public class CriarTemaCommand : Command
     public string Imagem { get; set; }
     public string ImagemUpload { get; set; }
     public string? Descricao { get; set; }
-    public IEnumerable<CriarProdutoCommand> Produtos { get; set; }
+    public IEnumerable<Guid> Produtos { get; set; }
 }

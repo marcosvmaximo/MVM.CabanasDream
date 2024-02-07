@@ -34,7 +34,8 @@ public class CriarTemaCommandValidator : AbstractValidator<CriarTemaCommand>
             .MaximumLength(500)
             .WithMessage("A descrição não deve conter mais que 500 caracteres.");
 
-        RuleForEach(command => command.Produtos)
-            .SetValidator(new CriarProdutoCommandValidator());
+        RuleFor(command => command.Produtos)
+            .Must(x => x == null || x.Count() <= 25)
+            .WithMessage("Um Tema pode conter no máximo 25 Produtos alocados à ele.");
     }
 }

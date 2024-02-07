@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using MVM.CabanasDream.Core.Application;
 using MVM.CabanasDream.Core.Bus;
 using MVM.CabanasDream.Core.Data;
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Messages;
 using MVM.CabanasDream.Core.Messages.Common;
-using MVM.CabanasDream.Festas.Domain;
-using MVM.CabanasDream.Festas.Domain.Entities;
+using MVM.CabanasDream.Festas.Domain.FestaContext;
+using MVM.CabanasDream.Festas.Domain.TemaContext;
+using MVM.CabanasDream.Festas.Domain.TemaContext.Entities;
 
 namespace MVM.CabanasDream.Festas.Data.Context;
 
@@ -28,7 +28,6 @@ public class DataContext : DbContext, IUnityOfWork
     public DbSet<Tema> Temas { get; set; }
     public DbSet<Cliente> Clientes { get; set; }
     public DbSet<Produto> Produtos { get; set; }
-    public DbSet<Administrador> Administradores { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

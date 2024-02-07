@@ -1,4 +1,4 @@
-namespace MVM.CabanasDream.Festas.Domain.Enum;
+namespace MVM.CabanasDream.Festas.Domain.FestaContext.Enum;
 
 public enum EStatusFesta
 {

@@ -1,7 +1,7 @@
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Validation;
 
-namespace MVM.CabanasDream.Festas.Domain.ValueObjects;
+namespace MVM.CabanasDream.Festas.Domain.TemaContext.ValueObjects;
 
 public class Valor : ValueObject
 {

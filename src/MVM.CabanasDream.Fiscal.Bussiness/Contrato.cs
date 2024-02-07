@@ -5,9 +5,8 @@ using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Validation;
 using MVM.CabanasDream.Fiscal.Bussiness.Enum;
 
-namespace MVM.CabanasDream.Fiscal.Bussiness;
-
-public class Contrato : Entity, IAggregateRoot
+namespace MVM.CabanasDream.Festas.Domain.FestaContext.Entities;
+public class Contrato : Entity
 {
     public Contrato(decimal valor, decimal multa)
     {

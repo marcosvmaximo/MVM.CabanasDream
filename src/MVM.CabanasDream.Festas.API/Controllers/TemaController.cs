@@ -16,36 +16,22 @@ namespace MVM.CabanasDream.Festas.API.Controllers;
 [ApiVersion("1.0")]
 public class TemaController : ControllerCommon
 {
-    private readonly IFestaRepository _repository;
+    private readonly ITemaRepository _repository;
 
     public TemaController(
-        IFestaRepository repository,
+        ITemaRepository repository,
         IMessageBus messager,
         INotificationHandler<DomainNotification> notification) : base(messager, notification)
     {
         _repository = repository;
     }
     
-    // [HttpGet("produtos")]
-    // [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
-    // [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
-    // public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTodosTemasComProdutos()
-    // {
-    //     var response = await _repository.ObterTodosTemas();
-    //     
-    //     // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-    //     if (response == null) 
-    //         return await CustomResponse(HttpStatusCode.NotFound);
-    //     
-    //     return await CustomResponse(HttpStatusCode.OK, response);
-    // }
-    
-    [HttpGet("{id:guid}")]
-    [ProducesResponseType(typeof(BaseResponse<TemaViewModel>), StatusCodes.Status200OK)]
+    [HttpGet("produtos")]
+    [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<TemaViewModel>> ObterTemaPorId(Guid id)
+    public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTemas()
     {
-        var response = await _repository.ObterTemaPorId(id);
+        var response = await _repository.ObterTodos();
         
         // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (response == null) 
@@ -54,19 +40,33 @@ public class TemaController : ControllerCommon
         return await CustomResponse(HttpStatusCode.OK, response);
     }
     
-    // [HttpGet]
-    // [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
-    // [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
-    // public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTemaPorFiltro([FromQuery] FiltroTema? filtro)
-    // {
-    //     var response = await _repository.ObterTodosTemas(filtro);
-    //     
-    //     // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-    //     if (response == null) 
-    //         return await CustomResponse(HttpStatusCode.NotFound);
-    //     
-    //     return await CustomResponse(HttpStatusCode.OK, response);
-    // }
+    [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(BaseResponse<TemaViewModel>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<TemaViewModel>> ObterTemaPorId(Guid id)
+    {
+        var response = await _repository.ObterPorId(id);
+        
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (response == null) 
+            return await CustomResponse(HttpStatusCode.NotFound);
+        
+        return await CustomResponse(HttpStatusCode.OK, response);
+    }
+    
+    [HttpGet]
+    [ProducesResponseType(typeof(BaseResponse<IEnumerable<TemaViewModel>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IEnumerable<TemaViewModel>>> ObterTemaPorFiltro([FromQuery] FiltroTema? filtro)
+    {
+        var response = await _repository.ObterTodos();
+        
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (response == null) 
+            return await CustomResponse(HttpStatusCode.NotFound);
+        
+        return await CustomResponse(HttpStatusCode.OK, response);
+    }
 
     [HttpPost]
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
@@ -82,9 +82,8 @@ public class TemaController : ControllerCommon
         var response = await _messager.SendCommand(request);
         
         if (response.Success)
-        {
             return await CustomResponse(response, HttpStatusCode.Created);
-        }
+
         return await CustomResponse(response);
     }
 
@@ -92,12 +91,11 @@ public class TemaController : ControllerCommon
     [ProducesDefaultResponseType(typeof(BaseResponse<>))]
     [ProducesResponseType(typeof(BaseResponse<TemaViewModel>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(BaseResponse<>), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> CadastrarProduto([FromBody]CriarProdutoCommand request, [FromRoute] Guid idTema)
+    public async Task<IActionResult> CadastrarProduto([FromBody]CriarProdutoCommand request)
     {
         if (!ModelState.IsValid)
             return await CustomResponse(ModelState);
 
-        request.TemaId = idTema;
         var response = await _messager.SendCommand(request);
         
         if (response.Success)

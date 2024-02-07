@@ -1,11 +1,11 @@
 using MVM.CabanasDream.Core.Domain;
 using MVM.CabanasDream.Core.Exceptions;
 using MVM.CabanasDream.Core.Validation;
-using MVM.CabanasDream.Festas.Domain.Entities;
-using MVM.CabanasDream.Festas.Domain.Enum;
-using MVM.CabanasDream.Festas.Domain.ValueObjects;
+using MVM.CabanasDream.Festas.Domain.FestaContext.Enum;
+using MVM.CabanasDream.Festas.Domain.FestaContext.ValueObjects;
+using MVM.CabanasDream.Festas.Domain.TemaContext;
 
-namespace MVM.CabanasDream.Festas.Domain;
+namespace MVM.CabanasDream.Festas.Domain.FestaContext;
 
 public class Festa : Entity, IAggregateRoot
 {
@@ -35,16 +35,14 @@ public class Festa : Entity, IAggregateRoot
     protected Festa(){}
     
     public Tema Tema { get; private set; }
-    public int QuantidadeParticipantes { get; private set; }
     public EStatusFesta Status { get; private set; }
+    public int QuantidadeParticipantes { get; private set; }
     public DataFesta Data { get; set; }
     public string? Observacao { get; private set; }
     public Guid TemaId { get; private set; }
     public Guid ClienteId { get; private set; }
     public Guid AdministradorId { get; private set; }
-    public Guid ContratoId { get; private set; }
-
-
+     
     public void ConfirmarFesta()
     {
         if (Status is not EStatusFesta.Pendente)

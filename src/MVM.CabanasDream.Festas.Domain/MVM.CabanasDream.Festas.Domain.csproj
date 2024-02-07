@@ -10,4 +10,8 @@
       <ProjectReference Include="..\MVM.CabanasDream.Core\MVM.CabanasDream.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="FestaContext\Entities\" />
+    </ItemGroup>
+
 </Project>

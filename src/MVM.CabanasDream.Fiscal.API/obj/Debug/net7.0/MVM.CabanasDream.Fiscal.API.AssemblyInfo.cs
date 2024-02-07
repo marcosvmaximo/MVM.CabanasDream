@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVM.CabanasDream.Fiscal.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c30a72175ae20786e9260eca4cc480af02b5578b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebdb60bb04c1705798d49c30b1339564e1146dc3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVM.CabanasDream.Fiscal.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVM.CabanasDream.Fiscal.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,23 +1,29 @@
 using MVM.CabanasDream.Core.Application;
 using MVM.CabanasDream.Core.Bus;
+using MVM.CabanasDream.Core.IntegrationsEvents;
 using MVM.CabanasDream.Festas.Application.Commands.Festas;
-using MVM.CabanasDream.Festas.Application.Validators;
+using MVM.CabanasDream.Festas.Application.Validators.Festas;
 using MVM.CabanasDream.Festas.Application.ViewModels.Festas;
-using MVM.CabanasDream.Festas.Domain;
-using MVM.CabanasDream.Festas.Domain.Entities;
-using MVM.CabanasDream.Festas.Domain.Enum;
+using MVM.CabanasDream.Festas.Application.ViewModels.Temas;
+using MVM.CabanasDream.Festas.Domain.FestaContext;
+using MVM.CabanasDream.Festas.Domain.FestaContext.Entities;
+using MVM.CabanasDream.Festas.Domain.FestaContext.Enum;
+using MVM.CabanasDream.Festas.Domain.FestaContext.Interfaces;
+using MVM.CabanasDream.Festas.Domain.FestaContext.ValueObjects;
 using MVM.CabanasDream.Festas.Domain.Interfaces;
-using MVM.CabanasDream.Festas.Domain.ValueObjects;
+using MVM.CabanasDream.Festas.Domain.TemaContext;
 
 namespace MVM.CabanasDream.Festas.Application.Handlers.Festas;
 
 public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
 {
-    private readonly IFestaRepository _repository;
+    private readonly IFestaRepository _festaRepository;
+    private readonly ITemaRepository _temaRepository;
 
-    public CriarFestaCommandHandler(IMessageBus bus, IFestaRepository repository) : base(bus)
+    public CriarFestaCommandHandler(IMessageBus bus, IFestaRepository festaRepository, ITemaRepository temaRepository) : base(bus)
     {
-        _repository = repository;
+        _festaRepository = festaRepository;
+        _temaRepository = temaRepository;
     }
 
     public override async Task<CommandResponse> Handle(CriarFestaCommand message, CancellationToken cancellationToken)
@@ -26,65 +32,85 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         if (!commandIsValid) return ReturnResponse();
 
         var tema = await GetTema(message.TemaId);
-        var administrador = await GetAdministrador(message.AdministradorId);
-        var cliente = await GetCliente(message.ClienteId);
+
+        if (!ValidationResult.IsValid)
+        {
+            return ReturnResponse();
+        }
+
+        if (await PossuiFestaAtiva(message.ClienteId))
+        {
+            return ReturnResponse();
+        }
         
-        if (!ValidationResult.IsValid) return ReturnResponse();
-        
-        bool possuiFestasAgendadas = await TemFestasAgendadasParaTemaNoPeriodo(
+        bool temaPossuiAgendamento = await VerificarDisponibilidadeTemaPorData(
             message.TemaId,
             message.DataRetirada,
             message.DataDevolucao);
-        if (possuiFestasAgendadas) return ReturnResponse();
+        if (temaPossuiAgendamento) return ReturnResponse();
 
-        var festa = MapFesta(message, tema!, cliente!, administrador!);
+        var festa = MapFesta(message, tema);
         
-        await _repository.SalvarFesta(festa);
-        await _repository.UnityOfWork.Commit();
+        await _festaRepository.SalvarFesta(festa);
+        await _festaRepository.UnityOfWork.Commit();
         
         return ReturnResponse(MapViewModel(festa));
     }
 
-    private Festa MapFesta(CriarFestaCommand message, Tema tema, Cliente cliente, Administrador administrador)
+    private async Task<bool> PossuiFestaAtiva(Guid idCliente)
     {
+        var enumerable = await _festaRepository.ObterFestaPorCliente(idCliente);
+        var festasCliente = enumerable.ToList();
+        
+        if (!festasCliente.Any()) return false;
+        
+        var festasAtivas = festasCliente.Where(x =>
+            x.Status == EStatusFesta.Pendente || x.Status == EStatusFesta.EmAndamento);
+
+        if (festasAtivas.Any())
+        {
+            AddError("Cliente", "O Cliente já possuí uma festa pendente ou em andamento. Complete ou cancele a festa pendente e tente novamente");
+            return true;
+        }
+
+        return false;
+    }
+
+    private Festa MapFesta(CriarFestaCommand message, Tema tema)
+    {
+        DataFesta dataFesta = new(message.DataRealizacao, message.DataRetirada, message.DataDevolucao);
+        
         Festa festa = new(
             message.QuantidadeParticipantes,
-            message.DataRealizacao,
-            message.DataRetirada,
-            message.DataDevolucao,
-            tema, 
-            cliente,
-            administrador,
+            tema,
+            dataFesta,
+            message.ClienteId, 
+            message.AdministradorId,
             message.Observacao);
         
-        Contrato contrato = new(festa.ObterValorFesta(), festa.ObterValorMulta());
-        festa.AssociarContrato(contrato);
+        // Festa Criada Event
+        // Fiscal pega o evento, obtem a festa, o cliente, o administrador e formula o contrato
+        // Verifica exigencias
+        // Cria contrato como pendente, aguardando pagamento
+        // Festa será pendente e aguardando pagamento.
+        festa.AddEvent(new FestaCriadaEvent(festa.Id, festa.TemaId, festa.ClienteId, festa.AdministradorId));
         
         return festa;
     }
 
     private FestaViewModel MapViewModel(Festa festa)
     {
-        List<ProdutoViewModel> produtos = new();
-        foreach (var produto in festa.Tema.Produtos)
-        {
-            produtos.Add(new(produto.Nome, produto.ValorLocacao));
-        }
-        
         return new FestaViewModel(
             festa.Tema.Nome,
-            festa.Cliente.Nome,
             festa.QuantidadeParticipantes,
-            festa.DataRealizacao,
-            festa.DataRetirada,
-            festa.DataDevolucao,
-            festa.Contrato.Valor,
-            festa.Contrato.Multa,
-            produtos);
+            festa.Data.Realizacao,
+            festa.Data.Retirada,
+            festa.Data.Devolucao
+            );
     }
     private async Task<Tema?> GetTema(Guid id)
     {
-        var tema = await _repository.ObterTemaPorId(id);
+        var tema = await _temaRepository.ObterPorId(id);
 
         if (tema is null)
         {
@@ -101,7 +127,7 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         return tema;
     }
 
-    private async Task<bool> TemFestasAgendadasParaTemaNoPeriodo(Guid idTema, DateTime dataInicio, DateTime dataFim)
+    private async Task<bool> VerificarDisponibilidadeTemaPorData(Guid idTema, DateTime dataInicio, DateTime dataFim)
     {
         // Adiciona um gap de 6 horas para data de retirada, e entrega
         // Ou seja, se alguem tiver outra festa do mesmo tema para retirar na data - 6h,
@@ -109,9 +135,9 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         dataInicio = dataInicio.Subtract(TimeSpan.FromHours(6));
         dataFim = dataFim.AddHours(6);
         
-        var festasAgendadas = await _repository.ObterFestasPorFiltro(f => 
+        var festasAgendadas = await _festaRepository.ObterFestasPorFiltro(f => 
             f.TemaId == idTema && 
-            f.DataRetirada >= dataInicio && f.DataDevolucao <= dataFim && 
+            f.Data.Retirada >= dataInicio && f.Data.Devolucao <= dataFim && 
             (f.Status == EStatusFesta.Pendente || f.Status == EStatusFesta.EmAndamento));
 
         if (festasAgendadas.Any())
@@ -121,25 +147,5 @@ public class CriarFestaCommandHandler : Handler<CriarFestaCommand>
         }
 
         return false;
-    }
-    
-    private async Task<Cliente?> GetCliente(Guid id)
-    {
-        var cliente = await _repository.ObterClientePorId(id);
-        
-        if(cliente is null)
-            AddError("Cliente","O Cliente solicitado não foi encontrado. Verifique se o ID do Cliente está correto e tente novamente.");
-
-        return cliente;
-    }
-    
-    private async Task<Administrador?> GetAdministrador(Guid id)
-    {
-        var administrador = await _repository.ObterAdministradorPorId(id);
-        
-        if(administrador is null)
-            AddError("Administrador","O Administrador solicitado não foi encontrado. Verifique se o ID do Administrador está correto e tente novamente.");
-
-        return administrador;
     }
 }
